@@ -147,6 +147,7 @@ header.header-wrap nav ul li.active a{color: var(--white)}
 
 .bg-hardlight img { opacity: 0.3; mix-blend-mode: hard-light; background-blend-mode: hard-light; }
 .bg-colorburn img { opacity: 0.2; mix-blend-mode: color-burn; background-blend-mode: color-burn; }
+.mac-os .bg-colorburn img { opacity: 0.2; mix-blend-mode: multiply; background-blend-mode: multiply; }
 
 /*Section Hero Style*/
 section.section-hero { background: #101010; }
