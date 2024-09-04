@@ -1,0 +1,12 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line y1="544.5" x2="905" y2="544.5" stroke="white" stroke-opacity="0.1"/>
+<line x1="959.5" y1="600" x2="959.5" y2="1080" stroke="white" stroke-opacity="0.1"/>
+<line x1="1015" y1="544.5" x2="1920" y2="544.5" stroke="white" stroke-opacity="0.1"/>
+<line x1="959.5" y1="-2.18557e-08" x2="959.5" y2="489" stroke="white" stroke-opacity="0.1"/>
+<circle cx="960" cy="545" r="15" fill="white"/>
+<circle cx="960.5" cy="545.5" r="144" stroke="white" stroke-opacity="0.1"/>
+<circle cx="960.5" cy="756.5" r="625" stroke="white" stroke-opacity="0.1"/>
+<circle cx="960.5" cy="1493.5" r="803" stroke="white" stroke-opacity="0.1"/>
+<path d="M1520.5 1484.5C1520.5 1792.67 1269.78 2042.5 960.5 2042.5C651.219 2042.5 400.5 1792.67 400.5 1484.5C400.5 1176.33 651.219 926.5 960.5 926.5C1269.78 926.5 1520.5 1176.33 1520.5 1484.5Z" stroke="white" stroke-opacity="0.1"/>
+<path d="M724.28 544.507C724.662 482.132 749.723 422.445 793.984 378.494C838.245 334.542 898.106 309.9 960.483 309.955C1022.86 310.01 1082.68 334.757 1126.86 378.786C1171.04 422.815 1196 482.546 1196.27 544.922" stroke="white" stroke-opacity="0.1"/>
+</svg>

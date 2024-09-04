@@ -1,0 +1,9 @@
+<svg width="375" height="812" viewBox="0 0 375 812" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="4.37114e-08" y1="383.5" x2="164" y2="383.5" stroke="white" stroke-opacity="0.08"/>
+<line x1="212" y1="383.5" x2="375" y2="383.5" stroke="white" stroke-opacity="0.08"/>
+<circle cx="187.5" cy="384.5" r="114" stroke="white" stroke-opacity="0.08"/>
+<path d="M28.3466 384.448C28.6036 342.555 45.4352 302.467 75.1623 272.948C104.889 243.429 145.094 226.878 186.988 226.915C228.881 226.952 269.057 243.573 298.732 273.144C328.407 302.716 345.168 342.833 345.352 384.726" stroke="white" stroke-opacity="0.08"/>
+<line x1="187.5" y1="-2.18557e-08" x2="187.5" y2="345" stroke="white" stroke-opacity="0.08"/>
+<line x1="187.5" y1="423" x2="187.5" y2="768" stroke="white" stroke-opacity="0.08"/>
+<circle cx="187.5" cy="1040.5" r="497" stroke="white" stroke-opacity="0.08"/>
+</svg>
