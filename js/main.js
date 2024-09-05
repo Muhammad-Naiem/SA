@@ -153,7 +153,7 @@
                     setTimeout(function(){
                         $('body').addClass('loaded')
                         setTimeout(function(){
-                            $('.preloader-wrap').remove()
+                            /*$('.preloader-wrap').remove()*/
                         }, 1000)
                     }, 2500)
                     
