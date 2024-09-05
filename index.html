@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+    <!--initial-scale=1.0, -->
+    <meta name="viewport" content="width=device-width, minimal-ui">
 
     <meta name="format-detection" content="telephone=no">
     <title>Stirbler</title>
@@ -1008,12 +1009,15 @@
     <script type="text/javascript" src="js/main.js" defer></script>
     <script>
         const lenis = new Lenis({
-            lerp: 0.1,
-            wheelMultiplier: 1,
+            duration: 3,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+            direction: 'vertical', // vertical, horizontal
+            gestureDirection: 'vertical', // vertical, horizontal, both
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 4,
             infinite: false,
-            gestureOrientation: "vertical",
-            normalizeWheel: false,
-            smoothTouch: false
         })
 
         //get scroll value

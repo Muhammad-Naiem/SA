@@ -836,16 +836,16 @@ section.section-hero { background: #101010; }
 
 
     /* Start Preloader Style */
-    .preloader-top{height: 70%;}
-    .preloader-bottom{padding: 0; height: 80px;}
+    .preloader-top{height: 73.5%;}
+    .preloader-bottom{padding: 16.5% 0 0; height: 26.5%;}
     .preloader-text{padding-inline: 18px;}
 
     .preloader-line-desk{display: none;}
-    .preloader-line-mobi{width: 100%; height: 100%; display: flex; flex-flow: row wrap; padding-top: 15px; gap: 10px;}
+    .preloader-line-mobi{width: 100%; height: 100%; display: flex; flex-flow: row wrap; padding-top: 16%; gap: 10px;}
     .preloader-line-mobi img{width: 100%;}
     /*img.mobi-preloader-top-shape{height: 30.773%;}
     img.mobi-preloader-main-shape{height: 67.405%;}*/
-    .preloader-video video { top: 66.5%; width: 84.258vh; max-width: 150%; }
+    .preloader-video video {top: 0; width: 150%; max-width: 240%; height: 100%; left: 50%; transform: translate(-50%, 0); object-position: left 260px; /* object-fit: contain; }
     .preloader-radial {width: 82.4vw; height: 82.4vw; left: -42.266667%; bottom: -25.333vw; scale: 1.5;}
     /* End Preloader Style */
     
