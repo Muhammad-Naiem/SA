@@ -137,7 +137,12 @@
         });
 
         }
+        
+        
+        var winH = $(window).height()
 
+        $('.preloader-wrap').css('height', winH)
+        console.log(winH)
         
         $(document).ready(function () {
             var counter = 0;
