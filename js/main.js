@@ -6,7 +6,7 @@
 
         const lenis = new Lenis({
             duration: 3,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
             direction: 'vertical', // vertical, horizontal
             gestureDirection: 'vertical', // vertical, horizontal, both
             smooth: true,
@@ -64,29 +64,6 @@
             });
         }
 
-        $(document).ready(function () {
-            var counter = 0;
-            var interval = setInterval(function () {
-                var formattedCounter = ('000' + counter).slice(-3); // Format counter to always show three digits
-                $('.preloader-text span').text(formattedCounter + '%');
-                $('.preloader-container-progress span').css('width', counter + '%');
-                counter++;
-                if (counter > 100) {
-                    clearInterval(interval);
-
-
-                    setTimeout(function () {
-                        $('body').addClass('loaded')
-                        setTimeout(function () {
-                            /*$('.preloader-wrap').remove()*/
-                        }, 1000)
-                    }, 2500)
-
-
-                }
-            }, 50); // Adjust the interval time as needed
-        });
-
 
         if ($('.home-page').length) {
 
@@ -108,6 +85,9 @@
 
             // Preload all images before initializing the scroll handler
             preloadImages();
+
+            // Set the initial image source to the first preloaded image
+            $model3D.attr("src", images[startFrame].src);
 
             // Create the ScrollTrigger
             ScrollTrigger.create({
@@ -208,7 +188,7 @@
                                     document.querySelector('.transition-wrap').classList.add('add-layer-transiton');
                                     setTimeout(function () {
                                         lenis.start();
-                                        lenis.scrollTo('.companies-wrap', {
+                                        lenis.scrollTo('.our-pertner-wrap', {
                                             offset: 100,
                                             duration: 0.5,
                                             easing: (t) => t, // Linear easing
@@ -241,15 +221,13 @@
 
 
                 var logoOffset = $('.companies-wrap').offset().top - $(window).outerHeight()
-                $(window).on('scroll', function () {
-                    console.log($(this).scrollTop())
-                })
-                console.log(logoOffset)
+                
                 let spacerFullHeight1 = gsap.timeline({
                     scrollTrigger: {
-                        trigger: "#client-logo-1",
+                        trigger: ".our-pertner-wrap",
                         scrub: true,
-                        start: "-100 100%",
+                        start: "95% 100%",
+                        markers: true,
 
                         onEnter: () => {
                             document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
@@ -302,7 +280,7 @@
                     }
                 });
 
-                gsap.registerPlugin(ScrollTrigger);
+                /*gsap.registerPlugin(ScrollTrigger);
 
                 function createLogoChangeAnimation(trigger, start, img1, img2) {
                     ScrollTrigger.create({
@@ -337,32 +315,18 @@
                 // Mobile animation
                 if ($(window).width() < 768) {
                     createLogoChangeAnimation("#client-logo-1", "25% 100%", ".companies-logo-icon img:nth-child(2)", ".companies-logo-icon img:nth-child(3)");
-                }
+                }*/
 
 
             });
 
-            let sectionInset = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#client-logo-1",
-                    scrub: 1,
-                    start: "20% 100%",
-                    end: "70% 100%",
-                }
-            });
-
-            sectionInset.to(".supply-chain-wrap", {
-                top: 0,
-                marginTop: 0,
-                duration: 1,
-            });
 
             let tlClip = gsap.timeline({
                 scrollTrigger: {
-                    trigger: "#client-logo-1",
+                    trigger: ".supply-chain-wrap",
                     scrub: true,
-                    start: "70% 100%",
-                    end: "110% 100%",
+                    start: "98% 100%",
+                    end: "150% 100%",
 
                 }
             });
@@ -386,12 +350,6 @@
                 },
                 ">"
             );
-
-
-
-
-
-
 
             let typeSplit = new SplitType('.after-clip-paragraph', {
                 types: 'lines, words, char',
@@ -439,12 +397,22 @@
                     tagName: "span"
                 });
 
+
+                if($(window).width() > 768){
+                    var yStart = "50% 90%";
+                    var yEnd = "70% 50%";
+                    console.log('desk')
+                }else{
+                     var yStart = "30% 90%";
+                     var yEnd = "50% 50%";
+                }
+
                 // Link timelines to scroll position
                 function createScrollTrigger(triggerElement, timeline) {
                     // Reset tl when scroll out of view past bottom of screen
                     ScrollTrigger.create({
                         trigger: ".companies-wrap",
-                        start: "70% 90%",
+                        start: yStart,
                         onLeaveBack: () => {
                             timeline.progress(0);
                             timeline.pause();
@@ -453,7 +421,7 @@
                     // Play tl when scrolled into view (60% from top of screen)
                     ScrollTrigger.create({
                         trigger: ".companies-wrap",
-                        start: "70% 90%",
+                        start: yStart,
                         onEnter: () => timeline.play()
                     });
                 }
@@ -462,8 +430,8 @@
                     let tl = gsap.timeline({
                         scrollTrigger: {
                             trigger: ".companies-wrap",
-                            start: "70% 90%",
-                            end: "80% 50%",
+                            start: yStart,
+                            end: yEnd,
                             scrub: true,
                         }
                     });
@@ -484,9 +452,6 @@
             });
 
 
-
-
-
             $(document).ready(function () {
                 function updateHeroImagesHeight() {
                     var heroContentHeight = $('.section-hero-content').outerHeight();
@@ -499,6 +464,45 @@
                 // Update height on window resize
                 $(window).resize(function () {
                     updateHeroImagesHeight();
+                });
+            });
+
+            $('.services-item').each(function () {
+                var $this = $(this);
+                $this.find('svg').each(function () {
+                    $(this).find('line').each(function(index){
+                        $(this).css('animation-delay', (index * 0.4) + 's');
+                    })
+                   
+                })
+                $this.find('svg').each(function () {
+                    $(this).find('circle').each(function(index){
+                        $(this).css('animation-delay', (index * 0.4) + 's');
+                    })
+                   
+                })
+               
+            })
+
+            $('.our-pertner-logo').each(function (index) {
+                $(this).css('animation-delay', (index * 0.25) + 's');
+            })
+            
+            $(document).ready(function () {
+                function adjustHeroBg1() {
+                    var aboutH1 = $('.our-pertner-wrap').outerHeight();
+                    var wH1 = $(window).outerHeight();
+                    var totalT1 = aboutH1 - wH1;
+                    $('.our-pertner-wrap').css('top', -totalT1);
+                    console.log(aboutH1, wH1, totalT1)
+                }
+
+                // Initial adjustment
+                adjustHeroBg1();
+
+                // Adjust on window resize
+                $(window).on('resize', function () {
+                    adjustHeroBg1();
                 });
             });
 
@@ -682,10 +686,11 @@
 
             let tlBgAlpha = gsap.timeline({
                 scrollTrigger: {
-                    trigger: ".about-hero-main",
-                    start: "65% 90%",
-                    end: "90% bottom",
+                    trigger: ".about-us-wrap",
+                    start: "60% 90%",
+                    end: "95% bottom",
                     scrub: 1,
+                    markers: true
                 }
             });
 
@@ -697,6 +702,22 @@
                 duration: 1,
             }, ">");
 
+
+
+            let aboutFadein = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".about-us-wrap",
+                    start: "100% 90%",
+                    end: "120% bottom",
+                    scrub: 1,
+                    markers: true
+                }
+            });
+
+            aboutFadein.to($('.about-us-wrap'), {
+                opacity: 1,
+                duration: 1,
+            })
 
             let tlMarsAlpha = gsap.timeline({
                 scrollTrigger: {
@@ -727,6 +748,30 @@
                     scrub: 1,
                 }
             });
+
+
+
+            $(document).ready(function () {
+                function adjustHeroBg() {
+                    var aboutH = $('.about-hero-main-bg').height();
+                    var wH = $(window).height();
+                    var totalT = aboutH - wH;
+                    $('.about-hero-main-bg').css('top', -totalT);
+                }
+
+                // Initial adjustment
+                adjustHeroBg();
+
+                // Adjust on window resize
+                $(window).on('resize', function () {
+                    adjustHeroBg();
+                });
+            });
+
+
+            
+
+
 
             tlMoonMove.fromTo($('.about-space-moon'), {
 

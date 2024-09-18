@@ -16,7 +16,7 @@
 
 <body>
 
-    <!--<section class="preloader-wrap">
+     <section class="preloader-wrap">
         <div class="preloader-radial"></div>
         <div class="preloader-inner">
             <div class="preloader-top">
@@ -44,7 +44,7 @@
             </div>
             <div class="preloader-bottom">
                 <div class="preloader-text">
-                    <span>000%</span>
+                    <span data>000%</span>
                     <div class="preloader-text-loading">
                         <p>Loading</p>
                         <div class='spinner'>
@@ -60,8 +60,7 @@
                 </div>
             </div>
         </div>
-    </section>-->
-
+    </section>
     <header class="header-wrap">
         <div class="container ">
             <div class="header-inner relative">
@@ -86,8 +85,10 @@
        <div class="section-inner-sticky">
            <div class="about-hero-main">
             <div class="about-hero-main-bg">
-                <img src="imgs/about/hero-bg.jpg" alt="hero-bg">
-                <img src="imgs/about/hero-bg.jpg" alt="hero-bg" class="about-hero-bg-overlay">
+                <img src="imgs/about/hero-bg.jpg" alt="hero-bg" class="desk">
+                <img src="imgs/about/about-hero-mobi.png" alt="hero-bg" class="mobi">
+                <img src="imgs/about/hero-bg.jpg" alt="hero-bg" class="about-hero-bg-overlay desk">
+                <img src="imgs/about/about-hero-mobi.png" alt="hero-bg" class="about-hero-bg-overlay mobi">
             </div>
             <div class="about-hero-main-line desk">
                 <img src="svgs/about/inovative-bg-desk.svg" alt="about-Group-line">
@@ -104,8 +105,8 @@
                 <div class="about-hero-wrap">
                     <div class="container relative">
                         <div class="about-hero-inner">
-                            <div class="about-hero-title animated-heading-h1">
-                                <h1 class="heading-anim-h1">A new and innovative way to address today’s modern day demands </h1>
+                            <div class="about-hero-title animated-heading">
+                                <h1 class="heading-anim">A new and innovative way to address today’s modern day demands </h1>
                             </div>
                             <div class="about-hero-content">
                                 <p class="anim-paragraph">With over 25 years of experience in sourcing and procurement across the aerospace,
@@ -178,50 +179,184 @@
                     </div>
                 </div>
             </div>
-            
-        </div>
-
-        <section class="about-us-wrap">
-            <div class="about-us-thumb">
-                <img src="imgs/about/about-man-image.jpg" alt="about-man-image">
-            </div>
-            <div class="container">
-                <div class="about-us-inner">
-                    <div class="about-us-content">
-                        <div class="about-us-content-top">
-                            <h6>Joseph Stielber</h6>
-                            <div class="about-us-content-info">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="text_line draw-svg">
-                                    <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
-                                </svg>
-                                <div>
-                                    <span>Founder of the company</span>
-                                    <span>Stiebler &amp; Associates </span>
+            <section class="about-us-wrap">
+                <div class="about-us-thumb">
+                    <img src="imgs/about/about-man-image.jpg" alt="about-man-image">
+                </div>
+                <div class="container">
+                    <div class="about-us-inner">
+                        <div class="about-us-content">
+                            <div class="about-us-content-top">
+                                <h6>Joseph Stielber</h6>
+                                <div class="about-us-content-info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="text_line draw-svg">
+                                        <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
+                                    </svg>
+                                    <div>
+                                        <span>Founder of the company</span>
+                                        <span>Stiebler &amp; Associates </span>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="text_line draw-svg">
+                                        <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
+                                    </svg>
                                 </div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="text_line draw-svg">
-                                    <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
-                                </svg>
+                                <div class="schedule-meeting-profile-social">
+                                    <ul>
+                                        <li><a href="#">
+                                                <img src="svgs/footer-social-line-left.svg" alt="social-line" class="social-line">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM8 13H12V24H8V13ZM11 9.99931C10.9769 8.86441 10.2279 8 9.01154 8C7.7952 8 7 8.86441 7 9.99931C7 11.1107 7.7717 12 8.96538 12H8.98811C10.2279 12 11 11.1107 11 9.99931ZM19.8514 13C22.2224 13 24 14.5364 24 17.8375L23.9999 23.9997H20.3968V18.2499C20.3968 16.8056 19.8754 15.8201 18.5711 15.8201C17.5756 15.8201 16.9827 16.4845 16.7223 17.1262C16.627 17.3562 16.6036 17.6766 16.6036 17.9978V24H13C13 24 13.0475 14.2611 13 13.2527H16.6036V14.7749C17.0818 14.0431 17.9383 13 19.8514 13Z" fill="#DC4444" />
+                                                </svg>
+                                                <img src="svgs/footer-social-line-right.svg" alt="social-line" class="social-line">
+                                            </a></li>
+                                        <li><a href="#">
+                                                <img src="svgs/footer-social-line-left.svg" alt="social-line" class="social-line">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                                    <path d="M32 16.0975C32 7.20613 24.8375 0 16 0C7.1625 0 0 7.20613 0 16.0975C0 24.1336 5.85 30.7927 13.5 32V20.7506H9.4375V16.0975H13.5V12.551C13.5 8.51719 15.8875 6.28807 19.5438 6.28807C21.2938 6.28807 23.125 6.60248 23.125 6.60248V10.564H21.1063C19.1188 10.564 18.5 11.8059 18.5 13.0792V16.0975H22.9375L22.2281 20.7506H18.5V32C26.15 30.7927 32 24.1336 32 16.0975Z" fill="#DC4444" />
+                                                </svg>
+                                                <img src="svgs/footer-social-line-right.svg" alt="social-line" class="social-line">
+                                            </a></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="schedule-meeting-profile-social">
-                                <ul>
-                                    <li><a href="#">
-                                            <img src="svgs/footer-social-line-left.svg" alt="social-line" class="social-line">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0ZM8 13H12V24H8V13ZM11 9.99931C10.9769 8.86441 10.2279 8 9.01154 8C7.7952 8 7 8.86441 7 9.99931C7 11.1107 7.7717 12 8.96538 12H8.98811C10.2279 12 11 11.1107 11 9.99931ZM19.8514 13C22.2224 13 24 14.5364 24 17.8375L23.9999 23.9997H20.3968V18.2499C20.3968 16.8056 19.8754 15.8201 18.5711 15.8201C17.5756 15.8201 16.9827 16.4845 16.7223 17.1262C16.627 17.3562 16.6036 17.6766 16.6036 17.9978V24H13C13 24 13.0475 14.2611 13 13.2527H16.6036V14.7749C17.0818 14.0431 17.9383 13 19.8514 13Z" fill="#DC4444" />
-                                            </svg>
-                                            <img src="svgs/footer-social-line-right.svg" alt="social-line" class="social-line">
-                                        </a></li>
-                                    <li><a href="#">
-                                            <img src="svgs/footer-social-line-left.svg" alt="social-line" class="social-line">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                                <path d="M32 16.0975C32 7.20613 24.8375 0 16 0C7.1625 0 0 7.20613 0 16.0975C0 24.1336 5.85 30.7927 13.5 32V20.7506H9.4375V16.0975H13.5V12.551C13.5 8.51719 15.8875 6.28807 19.5438 6.28807C21.2938 6.28807 23.125 6.60248 23.125 6.60248V10.564H21.1063C19.1188 10.564 18.5 11.8059 18.5 13.0792V16.0975H22.9375L22.2281 20.7506H18.5V32C26.15 30.7927 32 24.1336 32 16.0975Z" fill="#DC4444" />
-                                            </svg>
-                                            <img src="svgs/footer-social-line-right.svg" alt="social-line" class="social-line">
-                                        </a></li>
-                                </ul>
+                            <div class="about-us-content-text desk">
+                                <p class="anim-paragraph">My professional path to this point, however, began decades ago on the factory floor of a
+                                    family-owned aerospace manufacturing company. It’s there that I learned the craft of
+                                    machining and fabrication and, within a few years, had the privilege of managing that
+                                    same facility for nearly a decade — a role that afforded me an in-depth understanding of
+                                    both manufacturing and supply chain management. </p>
                             </div>
                         </div>
-                        <div class="about-us-content-text desk">
+                        <div class="about-us-details">
+                            <div class="about-us-details-row">
+                                <div class="about-us-details-row-case">
+                                    <span class="number">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                        <em>Case</em>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="about-us-details-row-heading">
+                                    <h6>Persimmon</h6>
+                                </div>
+                                <div class="about-us-details-row-num">
+                                    <span class="number">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                        <em>01</em>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="about-us-details-row-text">
+                                    <p class="anim-paragraph">While Director of Strategic Sourcing at Persimmon Technologies, I established
+                                        a domestic supply base in just
+                                        90 days</p>
+                                </div>
+                            </div>
+                            <div class="about-us-details-row multi-desc ">
+                                <div class="about-us-details-row-case">
+                                    <span class="number">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                        <em>Case</em>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="about-us-details-row-heading">
+                                    <h6>Blue Origin</h6>
+                                </div>
+                                <div class="about-us-details-row-num">
+                                    <span class="number">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                        <em>02</em>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="about-us-details-row-text">
+                                    <p class="desk anim-paragraph">And as Procurement Manager at Blue Origin,I sourced and onboarded 32 U.S. suppliers
+                                        to meet strict regulations and ITAR requirements and implemented RFQ/PO systems in
+                                        an accelerated time frame. </p>
+                                    <p class="mobi anim-paragraph">While Director of Strategic Sourcing at Persimmon Technologies, I established
+                                        a domestic supply base in just 90 days</p>
+                                </div>
+                            </div>
+                            <div class="about-us-details-row">
+                                <div class="about-us-details-row-case">
+                                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" class="mobi draw-svg">
+                                        <circle cx="19" cy="19" r="18.5" stroke="#818181" />
+                                        <path d="M19.54 24.18H17.66V20.1H13.6V18.36H17.66V14.32H19.54V18.36H23.6V20.1H19.54V24.18Z" fill="#818181" />
+                                    </svg>
+                                </div>
+                                <div class="about-us-details-row-heading">
+                                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" class="desk draw-svg">
+                                        <circle cx="19" cy="19" r="18.5" stroke="#818181" />
+                                        <path d="M19.54 24.18H17.66V20.1H13.6V18.36H17.66V14.32H19.54V18.36H23.6V20.1H19.54V24.18Z" fill="#818181" />
+                                    </svg>
+                                </div>
+                                <div class="about-us-details-row-num">
+                                    <span class="number">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                        <em>03</em>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="about-us-details-row-text">
+                                    <p class="anim-paragraph">I also built supplier partnerships and grew and mentored the procurement staff from a
+                                        team of one to a team of 23 that included buyers, QA staff, mechanical engineers,
+                                        and planners.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="about-us-details-row">
+                                <div class="about-us-details-row-case">
+                                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" class="mobi draw-svg">
+                                        <circle cx="19" cy="19" r="18.5" stroke="#818181" />
+                                        <path d="M19.54 24.18H17.66V20.1H13.6V18.36H17.66V14.32H19.54V18.36H23.6V20.1H19.54V24.18Z" fill="#818181" />
+                                    </svg>
+                                </div>
+                                <div class="about-us-details-row-heading">
+                                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" class="desk draw-svg">
+                                        <circle cx="19" cy="19" r="18.5" stroke="#818181" />
+                                        <path d="M19.54 24.18H17.66V20.1H13.6V18.36H17.66V14.32H19.54V18.36H23.6V20.1H19.54V24.18Z" fill="#818181" />
+                                    </svg>
+                                </div>
+                                <div class="about-us-details-row-num">
+                                    <span class="number">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                        <em>04</em>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
+                                            <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="about-us-details-row-text">
+                                    <p class="anim-paragraph">These experiences, and others like them, sharpened my ability to implement solutions
+                                        at a pace that meets the demands of emerging tech, where time is often the most
+                                        critical factor. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-us-content-text mobi">
                             <p class="anim-paragraph">My professional path to this point, however, began decades ago on the factory floor of a
                                 family-owned aerospace manufacturing company. It’s there that I learned the craft of
                                 machining and fabrication and, within a few years, had the privilege of managing that
@@ -229,145 +364,11 @@
                                 both manufacturing and supply chain management. </p>
                         </div>
                     </div>
-                    <div class="about-us-details">
-                        <div class="about-us-details-row">
-                            <div class="about-us-details-row-case">
-                                <span class="number">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                    <em>Case</em>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <div class="about-us-details-row-heading">
-                                <h6>Persimmon</h6>
-                            </div>
-                            <div class="about-us-details-row-num">
-                                <span class="number">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                    <em>01</em>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <div class="about-us-details-row-text">
-                                <p class="anim-paragraph">While Director of Strategic Sourcing at Persimmon Technologies, I established
-                                    a domestic supply base in just
-                                    90 days</p>
-                            </div>
-                        </div>
-                        <div class="about-us-details-row multi-desc ">
-                            <div class="about-us-details-row-case">
-                                <span class="number">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                    <em>Case</em>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <div class="about-us-details-row-heading">
-                                <h6>Blue Origin</h6>
-                            </div>
-                            <div class="about-us-details-row-num">
-                                <span class="number">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                    <em>02</em>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <div class="about-us-details-row-text">
-                                <p class="desk anim-paragraph">And as Procurement Manager at Blue Origin,I sourced and onboarded 32 U.S. suppliers
-                                    to meet strict regulations and ITAR requirements and implemented RFQ/PO systems in
-                                    an accelerated time frame. </p>
-                                <p class="mobi anim-paragraph">While Director of Strategic Sourcing at Persimmon Technologies, I established
-                                    a domestic supply base in just 90 days</p>
-                            </div>
-                        </div>
-                        <div class="about-us-details-row">
-                            <div class="about-us-details-row-case">
-                                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" class="mobi draw-svg">
-                                    <circle cx="19" cy="19" r="18.5" stroke="#818181" />
-                                    <path d="M19.54 24.18H17.66V20.1H13.6V18.36H17.66V14.32H19.54V18.36H23.6V20.1H19.54V24.18Z" fill="#818181" />
-                                </svg>
-                            </div>
-                            <div class="about-us-details-row-heading">
-                                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" class="desk draw-svg">
-                                    <circle cx="19" cy="19" r="18.5" stroke="#818181" />
-                                    <path d="M19.54 24.18H17.66V20.1H13.6V18.36H17.66V14.32H19.54V18.36H23.6V20.1H19.54V24.18Z" fill="#818181" />
-                                </svg>
-                            </div>
-                            <div class="about-us-details-row-num">
-                                <span class="number">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                    <em>03</em>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <div class="about-us-details-row-text">
-                                <p class="anim-paragraph">I also built supplier partnerships and grew and mentored the procurement staff from a
-                                    team of one to a team of 23 that included buyers, QA staff, mechanical engineers,
-                                    and planners.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="about-us-details-row">
-                            <div class="about-us-details-row-case">
-                                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" class="mobi draw-svg">
-                                    <circle cx="19" cy="19" r="18.5" stroke="#818181" />
-                                    <path d="M19.54 24.18H17.66V20.1H13.6V18.36H17.66V14.32H19.54V18.36H23.6V20.1H19.54V24.18Z" fill="#818181" />
-                                </svg>
-                            </div>
-                            <div class="about-us-details-row-heading">
-                                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" class="desk draw-svg">
-                                    <circle cx="19" cy="19" r="18.5" stroke="#818181" />
-                                    <path d="M19.54 24.18H17.66V20.1H13.6V18.36H17.66V14.32H19.54V18.36H23.6V20.1H19.54V24.18Z" fill="#818181" />
-                                </svg>
-                            </div>
-                            <div class="about-us-details-row-num">
-                                <span class="number">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M7 1H1V13H7" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                    <em>04</em>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none" class="number-line draw-svg">
-                                        <path d="M-4.47035e-08 1H6V13H-4.47035e-08" stroke="white" stroke-opacity="0.5" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <div class="about-us-details-row-text">
-                                <p class="anim-paragraph">These experiences, and others like them, sharpened my ability to implement solutions
-                                    at a pace that meets the demands of emerging tech, where time is often the most
-                                    critical factor. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-us-content-text mobi">
-                        <p class="anim-paragraph">My professional path to this point, however, began decades ago on the factory floor of a
-                            family-owned aerospace manufacturing company. It’s there that I learned the craft of
-                            machining and fabrication and, within a few years, had the privilege of managing that
-                            same facility for nearly a decade — a role that afforded me an in-depth understanding of
-                            both manufacturing and supply chain management. </p>
-                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            
+        </div>
+
        </div>
        
         
@@ -443,40 +444,36 @@
         <section class="potential-headwinds-wrap">
             <div class="potential-sticky">
                 <div class="potential-headwinds-shape">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1893" height="1086" viewBox="0 0 1893 1086" fill="none" class="draw-svg-trigger desk">
-                        <path d="M1.93205e-05 9.91602L0 409.729M1.93205e-05 432.254L5.03422e-05 1074.21M1892 432.254V1074.21M1892 9.91602V409.729M1877.5 1L15.5 1M231.5 421.461H15.5M616.5 1085H15.5M1247.5 1085H643.5M1878.5 1085H1273.5M615.5 421.461H262.5M1627.5 421.461H643.5M1878.5 421.461H1658.5M12.3019 10.6432L617.907 1073.06M1878.7 10.6432L1273.09 1073.06M632 431.315V1073.27M1260 431.315V1073.27" stroke="white" stroke-opacity="0.2" />
-                        <line x1="1872" y1="740.5" x2="1872" y2="862.5" stroke="white" stroke-opacity="0.2" />
-                        <line x1="1858.5" y1="776" x2="1866.5" y2="776" stroke="white" stroke-opacity="0.2" />
-                        <line x1="1852.5" y1="786" x2="1866.5" y2="786" stroke="white" stroke-opacity="0.2" />
-                        <line x1="1861.5" y1="796" x2="1866.5" y2="796" stroke="white" stroke-opacity="0.2" />
-                        <line x1="1854.5" y1="806" x2="1866.5" y2="806" stroke="white" stroke-opacity="0.2" />
-                        <line x1="1863.5" y1="816" x2="1866.5" y2="816" stroke="white" stroke-opacity="0.2" />
-                        <line x1="1852.5" y1="826" x2="1866.5" y2="826" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="122" y2="-0.5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 20.5 740.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="8" y2="-0.5" transform="matrix(-1 0 0 1 33.5 776.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(-1 8.74228e-08 8.74228e-08 1 39.5 786.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="5" y2="-0.5" transform="matrix(-1 8.74228e-08 8.74228e-08 1 30.5 796.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="12" y2="-0.5" transform="matrix(-1 -8.74228e-08 -8.74228e-08 1 37.5 806.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="3" y2="-0.5" transform="matrix(-1 8.74231e-08 8.74231e-08 1 28.5 816.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(-1 -8.74228e-08 -8.74228e-08 1 39.5 826.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="122" y2="-0.5" transform="matrix(-1 3.17865e-08 3.17865e-08 1 615.5 469.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="8" y2="-0.5" transform="matrix(1.19249e-08 -1 -1 -1.19249e-08 579.5 482.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(-7.5498e-08 -1 -1 7.5498e-08 569.5 488.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="5" y2="-0.5" transform="matrix(-7.54979e-08 -1 -1 7.54979e-08 559.5 479.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="12" y2="-0.5" transform="matrix(9.93476e-08 -1 -1 -9.93476e-08 549.5 486.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="3" y2="-0.5" transform="matrix(-7.54982e-08 -1 -1 7.54982e-08 539.5 477.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(9.93477e-08 -1 -1 -9.93477e-08 529.5 488.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="122" y2="-0.5" transform="matrix(-1 3.17865e-08 3.17865e-08 1 1399.5 469.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="8" y2="-0.5" transform="matrix(1.19249e-08 -1 -1 -1.19249e-08 1363.5 482.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(-7.5498e-08 -1 -1 7.5498e-08 1353.5 488.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="5" y2="-0.5" transform="matrix(-7.54979e-08 -1 -1 7.54979e-08 1343.5 479.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="12" y2="-0.5" transform="matrix(9.93476e-08 -1 -1 -9.93476e-08 1333.5 486.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="3" y2="-0.5" transform="matrix(-7.54982e-08 -1 -1 7.54982e-08 1323.5 477.5)" stroke="white" stroke-opacity="0.2" />
-                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(9.93477e-08 -1 -1 -9.93477e-08 1313.5 488.5)" stroke="white" stroke-opacity="0.2" />
-                    </svg>
                     <svg xmlns="http://www.w3.org/2000/svg" width="1893" height="1086" viewBox="0 0 1893 1086" fill="none" class="draw-svg-trigger draw-svg desk">
-                        <path d="M1.93205e-05 9.91602L0 409.729M1.93205e-05 432.254L5.03422e-05 1074.21M1892 432.254V1074.21M1892 9.91602V409.729M1877.5 1L15.5 1M231.5 421.461H15.5M616.5 1085H15.5M1247.5 1085H643.5M1878.5 1085H1273.5M615.5 421.461H262.5M1627.5 421.461H643.5M1878.5 421.461H1658.5M12.3019 10.6432L617.907 1073.06M1878.7 10.6432L1273.09 1073.06M632 431.315V1073.27M1260 431.315V1073.27" stroke="#DC4444" stroke-opacity="0.5" />
+                        <path d="M1.93205e-05 9.91602L0 409.729M1.93205e-05 432.254L5.03422e-05 1074.21M1892 432.254V1074.21M1892 9.91602V409.729M1877.5 1L15.5 1M231.5 421.461H15.5M616.5 1085H15.5M1247.5 1085H643.5M1878.5 1085H1273.5M615.5 421.461H262.5M1627.5 421.461H643.5M1878.5 421.461H1658.5M12.3019 10.6432L617.907 1073.06M1878.7 10.6432L1273.09 1073.06M632 431.315V1073.27M1260 431.315V1073.27" stroke="white" stroke-opacity="0.3" />
+                        <line x1="1872" y1="740.5" x2="1872" y2="862.5" stroke="white" stroke-opacity="0.3" />
+                        <line x1="1858.5" y1="776" x2="1866.5" y2="776" stroke="white" stroke-opacity="0.3" />
+                        <line x1="1852.5" y1="786" x2="1866.5" y2="786" stroke="white" stroke-opacity="0.3" />
+                        <line x1="1861.5" y1="796" x2="1866.5" y2="796" stroke="white" stroke-opacity="0.3" />
+                        <line x1="1854.5" y1="806" x2="1866.5" y2="806" stroke="white" stroke-opacity="0.3" />
+                        <line x1="1863.5" y1="816" x2="1866.5" y2="816" stroke="white" stroke-opacity="0.3" />
+                        <line x1="1852.5" y1="826" x2="1866.5" y2="826" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="122" y2="-0.5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 20.5 740.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="8" y2="-0.5" transform="matrix(-1 0 0 1 33.5 776.5)" stroke="white" stroke-opacity="0.2" />
+                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(-1 8.74228e-08 8.74228e-08 1 39.5 786.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="5" y2="-0.5" transform="matrix(-1 8.74228e-08 8.74228e-08 1 30.5 796.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="12" y2="-0.5" transform="matrix(-1 -8.74228e-08 -8.74228e-08 1 37.5 806.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="3" y2="-0.5" transform="matrix(-1 8.74231e-08 8.74231e-08 1 28.5 816.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(-1 -8.74228e-08 -8.74228e-08 1 39.5 826.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="122" y2="-0.5" transform="matrix(-1 3.17865e-08 3.17865e-08 1 615.5 469.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="8" y2="-0.5" transform="matrix(1.19249e-08 -1 -1 -1.19249e-08 579.5 482.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(-7.5498e-08 -1 -1 7.5498e-08 569.5 488.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="5" y2="-0.5" transform="matrix(-7.54979e-08 -1 -1 7.54979e-08 559.5 479.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="12" y2="-0.5" transform="matrix(9.93476e-08 -1 -1 -9.93476e-08 549.5 486.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="3" y2="-0.5" transform="matrix(-7.54982e-08 -1 -1 7.54982e-08 539.5 477.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(9.93477e-08 -1 -1 -9.93477e-08 529.5 488.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="122" y2="-0.5" transform="matrix(-1 3.17865e-08 3.17865e-08 1 1399.5 469.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="8" y2="-0.5" transform="matrix(1.19249e-08 -1 -1 -1.19249e-08 1363.5 482.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(-7.5498e-08 -1 -1 7.5498e-08 1353.5 488.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="5" y2="-0.5" transform="matrix(-7.54979e-08 -1 -1 7.54979e-08 1343.5 479.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="12" y2="-0.5" transform="matrix(9.93476e-08 -1 -1 -9.93476e-08 1333.5 486.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="3" y2="-0.5" transform="matrix(-7.54982e-08 -1 -1 7.54982e-08 1323.5 477.5)" stroke="white" stroke-opacity="0.3" />
+                        <line y1="-0.5" x2="14" y2="-0.5" transform="matrix(9.93477e-08 -1 -1 -9.93477e-08 1313.5 488.5)" stroke="white" stroke-opacity="0.3" />
                     </svg>
                     <img src="svgs/about/rover-bg.svg" class="mobi" alt="potential-headwinds-shape">
                 </div>

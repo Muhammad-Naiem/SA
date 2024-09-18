@@ -7,7 +7,7 @@
                 $('.preloader-text span').text(formattedCounter + '%');
                 $('.preloader-container-progress span').css('width', counter + '%');
                 counter++;
-                /*if (counter > 100) {
+                if (counter > 100) {
                     clearInterval(interval);
 
                     setTimeout(function () {
@@ -16,13 +16,13 @@
                             // Initialize animations for all .animated-heading elements
                             initializeAnimations();
                         }, 100);
-                    }, 2000);
-                }*/
+                    }, 1000);
+                }
             }, 50); // Adjust the interval time as needed
 
-            /*// Register the ScrollTrigger plugin
+            // Register the ScrollTrigger plugin
             gsap.registerPlugin(ScrollTrigger);
-
+            
             // Function to initialize SplitType and create animations for each .animated-heading
             function initializeAnimations() {
                 $('.animated-heading').each(function (index, element) {
@@ -43,6 +43,21 @@
                         var eachWord = $this.text();
                         wordsArray.push('<span class="anim-word">' + eachWord + '</span>');
                         $this.text(''); // Clear the .word text
+                    });
+
+                    function setWordWidths() {
+                        $(element).find('.animated-lizard .word').each(function (wordIndex) {
+                            var $this = $(this);
+                            var originalWord = $(element).find('.heading-anim .word').eq(wordIndex);
+                            var wordWidth = originalWord.outerWidth();
+                            $this.css('width', wordWidth);
+                        });
+                    }
+
+                    setWordWidths(); // Set initial widths
+
+                    $(window).resize(function () {
+                        setWordWidths(); // Adjust widths on window resize
                     });
 
                     setTimeout(function () {
@@ -68,9 +83,11 @@
                         // Create ScrollTrigger instances
                         ScrollTrigger.create({
                             trigger: element,
-                            start: "top 80%", // Adjust the start position as needed
+                            start: "top 97%", // Adjust the start position as needed
                             onEnter: function () {
-                                animateWords();
+                                setTimeout(function () {
+                                    animateWords();
+                                }, 1000); // Add a 1-second delay before starting the animation
                             },
                             onLeaveBack: function () {
                                 // Reset the animation
@@ -80,10 +97,32 @@
                             }
                         });
                     }, 100);
-                });*/
+                });
             }
         });
-        
+
+        function countDecimals(value) {
+            if (Math.floor(value) === value) return 0;
+            return value.toString().split(".")[1].length || 0;
+        }
+
+        function updateValue($element, finalValue, decimalPlaces) {
+            $({
+                countNum: 0
+            }).animate({
+                countNum: finalValue
+            }, {
+                duration: 3000,
+                easing: 'swing',
+                step: function () {
+                    $element.text(('000' + this.countNum.toFixed(decimalPlaces)).slice(-3) + '%');
+                },
+                complete: function () {
+                    $element.text(('000' + finalValue.toFixed(decimalPlaces)).slice(-3) + '%');
+                }
+            });
+        }
+
         function initializeAnimations1() {
             $('.animated-heading-h1').each(function (index, element) {
                 // Split the text into lines and words
