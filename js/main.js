@@ -182,7 +182,7 @@
                     scrollTrigger: {
                         trigger: ".companies-wrap",
                         scrub: true,
-                        start: "-50 90%",
+                        start: "-2 100%",
                         markers: true,
                         onEnter: () => {
                             lenis.stop();
