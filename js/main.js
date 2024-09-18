@@ -182,7 +182,8 @@
                     scrollTrigger: {
                         trigger: ".companies-wrap",
                         scrub: true,
-                        start: "0% 90%",
+                        start: "-50 90%",
+                        markers: true,
                         onEnter: () => {
                             lenis.stop();
                             gsap.to(".transition-wrap", {
@@ -192,7 +193,7 @@
                                     setTimeout(function () {
                                         lenis.start();
                                         lenis.scrollTo('.our-pertner-wrap', {
-                                            offset: 100,
+                                            offset: 5,
                                             duration: 0.5,
                                             easing: (t) => t, // Linear easing
                                             onComplete: function () {
@@ -221,7 +222,7 @@
                     scrollTrigger: {
                         trigger: ".our-pertner-wrap",
                         scrub: true,
-                        start: "95% 100%",
+                        start: "100% 100%",
                         markers: true,
                         onEnter: () => {
                             document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
@@ -249,7 +250,7 @@
                                     setTimeout(function () {
                                         lenis.start();
                                         lenis.scrollTo('.our-team-wrap', {
-                                            offset: -100,
+                                            offset: -5,
                                             duration: 0.5,
                                             easing: (t) => t, // Linear easing
                                             onComplete: function () {
