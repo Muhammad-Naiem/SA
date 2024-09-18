@@ -3,7 +3,7 @@
         gsap.registerPlugin(ScrollTrigger);
 
 
-        if ($(window).width() > 768) {
+        // if ($(window).width() > 768) {
             const lenis = new Lenis({
                 duration: 3,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
@@ -34,7 +34,7 @@
 
             requestAnimationFrame(raf)
 
-        }
+        // }
 
         $(document).ready(function () {
             var userAgent = navigator.userAgent.toLowerCase();
@@ -182,7 +182,7 @@
                     scrollTrigger: {
                         trigger: ".companies-wrap",
                         scrub: true,
-                        start: "-100 90%",
+                        start: "0% 90%",
                         onEnter: () => {
                             lenis.stop();
                             gsap.to(".transition-wrap", {
@@ -202,7 +202,7 @@
                                                 }, 500); // Adjust the delay as needed
                                             }
                                         });
-                                    }, 1000);
+                                    }, 1500);
                                 }
                             });
                         },
@@ -212,7 +212,7 @@
                                 gsap.to(".transition-wrap", {
                                     display: 'none',
                                 });
-                            }, 500);
+                            }, 800);
                         }
                     }
                 });
@@ -238,7 +238,7 @@
                                         img.style.opacity = '1';
                                     }
                                 });
-                            }, 500);
+                            }, 800);
                         },
                         onLeaveBack: () => {
                             lenis.stop();
@@ -259,7 +259,7 @@
                                                 }, 500); // Adjust the delay as needed
                                             }
                                         });
-                                    }, 1000);
+                                    }, 1500);
                                 }
                             });
                         }
