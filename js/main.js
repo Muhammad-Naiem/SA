@@ -3,36 +3,39 @@
         gsap.registerPlugin(ScrollTrigger);
 
 
+        if ($(window).width() > 768) {
+            const lenis = new Lenis({
+                duration: 3,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+                direction: 'vertical', // vertical, horizontal
+                gestureDirection: 'vertical', // vertical, horizontal, both
+                smooth: true,
+                mouseMultiplier: 1,
+                smoothTouch: false,
+                touchMultiplier: 4,
+                infinite: false,
+            })
 
-        const lenis = new Lenis({
-            duration: 3,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-            direction: 'vertical', // vertical, horizontal
-            gestureDirection: 'vertical', // vertical, horizontal, both
-            smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 4,
-            infinite: false,
-        })
+            //get scroll value
+            lenis.on('scroll', ({
+                scroll,
+                limit,
+                velocity,
+                direction,
+                progress
+            }) => {
 
-        //get scroll value
-        lenis.on('scroll', ({
-            scroll,
-            limit,
-            velocity,
-            direction,
-            progress
-        }) => {
+            })
 
-        })
+            function raf(time) {
+                lenis.raf(time)
+                requestAnimationFrame(raf)
+            }
 
-        function raf(time) {
-            lenis.raf(time)
             requestAnimationFrame(raf)
+
         }
 
-        requestAnimationFrame(raf)
         $(document).ready(function () {
             var userAgent = navigator.userAgent.toLowerCase();
             if (userAgent.indexOf('win') !== -1) {
@@ -173,13 +176,13 @@
             }
 
             $(window).on('load', function () {
+                gsap.registerPlugin(ScrollTrigger);
 
                 let tl3dToLogo = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".companies-wrap",
                         scrub: true,
                         start: "-100 90%",
-
                         onEnter: () => {
                             lenis.stop();
                             gsap.to(".transition-wrap", {
@@ -193,7 +196,6 @@
                                             duration: 0.5,
                                             easing: (t) => t, // Linear easing
                                             onComplete: function () {
-                                                // Use a timeout to ensure the class removal happens after the scroll completes
                                                 setTimeout(function () {
                                                     document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
                                                     ScrollTrigger.refresh(); // Ensure ScrollTrigger updates its calculations
@@ -205,37 +207,28 @@
                             });
                         },
                         onLeaveBack: () => {
-                            /*  lenis.stop()*/
                             document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
                             setTimeout(function () {
                                 gsap.to(".transition-wrap", {
-
                                     display: 'none',
-                                })
-                            }, 500)
-
-
+                                });
+                            }, 500);
                         }
                     }
                 });
 
-
-                var logoOffset = $('.companies-wrap').offset().top - $(window).outerHeight()
-                
                 let spacerFullHeight1 = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".our-pertner-wrap",
                         scrub: true,
                         start: "95% 100%",
                         markers: true,
-
                         onEnter: () => {
                             document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
                             setTimeout(function () {
                                 gsap.to(".transition-wrap", {
-
                                     display: 'none',
-                                })
+                                });
                                 document.querySelectorAll('.companies-logo-wrap').forEach(logo => {
                                     logo.classList.add('start-clip-anim');
                                 });
@@ -245,17 +238,14 @@
                                         img.style.opacity = '1';
                                     }
                                 });
-                            }, 500)
-
+                            }, 500);
                         },
                         onLeaveBack: () => {
-                            lenis.stop()
+                            lenis.stop();
                             gsap.to(".transition-wrap", {
-
                                 display: 'flex',
                                 onComplete: function () {
                                     document.querySelector('.transition-wrap').classList.add('add-layer-transiton');
-
                                     setTimeout(function () {
                                         lenis.start();
                                         lenis.scrollTo('.our-team-wrap', {
@@ -263,7 +253,6 @@
                                             duration: 0.5,
                                             easing: (t) => t, // Linear easing
                                             onComplete: function () {
-                                                // Use a timeout to ensure the class removal happens after the scroll completes
                                                 setTimeout(function () {
                                                     document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
                                                     ScrollTrigger.refresh(); // Ensure ScrollTrigger updates its calculations
@@ -272,52 +261,10 @@
                                         });
                                     }, 1000);
                                 }
-
-                            })
+                            });
                         }
-
-
                     }
                 });
-
-                /*gsap.registerPlugin(ScrollTrigger);
-
-                function createLogoChangeAnimation(trigger, start, img1, img2) {
-                    ScrollTrigger.create({
-                        trigger: trigger,
-                        start: start,
-                        onEnter: () => {
-                            gsap.to(img1, {
-                                opacity: 0,
-                                duration: 0.1
-                            });
-                            gsap.to(img2, {
-                                opacity: 1,
-                                duration: 0.1
-                            });
-                        },
-                        onLeaveBack: () => {
-                            gsap.to(img1, {
-                                opacity: 1,
-                                duration: 0.1
-                            });
-                            gsap.to(img2, {
-                                opacity: 0,
-                                duration: 0.1
-                            });
-                        }
-                    });
-                }
-
-                // Desktop animation
-                createLogoChangeAnimation("#client-logo-1", "10% 100%", ".companies-logo-icon img:nth-child(1)", ".companies-logo-icon img:nth-child(2)");
-
-                // Mobile animation
-                if ($(window).width() < 768) {
-                    createLogoChangeAnimation("#client-logo-1", "25% 100%", ".companies-logo-icon img:nth-child(2)", ".companies-logo-icon img:nth-child(3)");
-                }*/
-
-
             });
 
 
@@ -398,13 +345,13 @@
                 });
 
 
-                if($(window).width() > 768){
+                if ($(window).width() > 768) {
                     var yStart = "50% 90%";
                     var yEnd = "70% 50%";
                     console.log('desk')
-                }else{
-                     var yStart = "30% 90%";
-                     var yEnd = "50% 50%";
+                } else {
+                    var yStart = "30% 90%";
+                    var yEnd = "50% 50%";
                 }
 
                 // Link timelines to scroll position
@@ -470,24 +417,24 @@
             $('.services-item').each(function () {
                 var $this = $(this);
                 $this.find('svg').each(function () {
-                    $(this).find('line').each(function(index){
+                    $(this).find('line').each(function (index) {
                         $(this).css('animation-delay', (index * 0.4) + 's');
                     })
-                   
+
                 })
                 $this.find('svg').each(function () {
-                    $(this).find('circle').each(function(index){
+                    $(this).find('circle').each(function (index) {
                         $(this).css('animation-delay', (index * 0.4) + 's');
                     })
-                   
+
                 })
-               
+
             })
 
             $('.our-pertner-logo').each(function (index) {
                 $(this).css('animation-delay', (index * 0.25) + 's');
             })
-            
+
             $(document).ready(function () {
                 function adjustHeroBg1() {
                     var aboutH1 = $('.our-pertner-wrap').outerHeight();
@@ -769,7 +716,7 @@
             });
 
 
-            
+
 
 
 
