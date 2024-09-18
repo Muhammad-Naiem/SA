@@ -192,8 +192,8 @@
                                     document.querySelector('.transition-wrap').classList.add('add-layer-transiton');
                                     setTimeout(function () {
                                         lenis.start();
-                                        lenis.scrollTo('.our-pertner-wrap', {
-                                            offset: 5,
+                                        lenis.scrollTo('.companies-wrap', {
+                                            offset: 0,
                                             duration: 0.5,
                                             easing: (t) => t, // Linear easing
                                             onComplete: function () {
@@ -220,9 +220,9 @@
 
                 let spacerFullHeight1 = gsap.timeline({
                     scrollTrigger: {
-                        trigger: ".our-pertner-wrap",
+                        trigger: ".pos-blank-spacer",
                         scrub: true,
-                        start: "100% 100%",
+                        start: "99% 100%",
                         markers: true,
                         onEnter: () => {
                             document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');

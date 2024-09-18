@@ -915,6 +915,9 @@ section.section-hero { background: #101010; z-index: 1;}
 .transition-active .transition-column-top{will-change: transform; -webkit-transform: translateY(-110%); -ms-transform: translateY(-110%); transform: translateY(-110%);}
 .transition-active .transition-column-bottom{will-change: transform; -webkit-transform: translateY(110%); -ms-transform: translateY(110%); transform: translateY(110%);}
 
+
+.pos-blank-spacer{position: absolute; top: 0; left: 0; height: 100vh;}
+
 /* ==== Responsive Style ==== */
 
 
