@@ -4,35 +4,41 @@
 
 
         // if ($(window).width() > 768) {
-            const lenis = new Lenis({
-                duration: 3,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-                direction: 'vertical', // vertical, horizontal
-                gestureDirection: 'vertical', // vertical, horizontal, both
-                smooth: true,
-                mouseMultiplier: 1,
-                smoothTouch: false,
-                touchMultiplier: 4,
-                infinite: false,
-            })
+        // Function to detect if the user is on a mobile device
+        function isMobile() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
 
-            //get scroll value
-            lenis.on('scroll', ({
-                scroll,
-                limit,
-                velocity,
-                direction,
-                progress
-            }) => {
+        // Initialize Lenis with different configurations based on the device type
+        const lenis = new Lenis({
+            duration: 3, // No smooth scrolling on mobile
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+            direction: 'vertical', // vertical, horizontal
+            gestureDirection: 'vertical', // vertical, horizontal, both
+            smooth: true, // Smooth scrolling only on desktop
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 4,
+            infinite: false,
+        });
 
-            })
+        // Get scroll value
+        lenis.on('scroll', ({
+            scroll,
+            limit,
+            velocity,
+            direction,
+            progress
+        }) => {
 
-            function raf(time) {
-                lenis.raf(time)
-                requestAnimationFrame(raf)
-            }
+        });
 
+        function raf(time) {
+            lenis.raf(time)
             requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf);
 
         // }
 
@@ -86,6 +92,25 @@
                 }
             }
 
+            $(document).ready(function () {
+                function adjustHeroBg1() {
+                    var aboutH1 = $('.section-hero').outerHeight();
+                    var wH1 = $(window).outerHeight();
+                    var totalT1 = aboutH1 - wH1;
+                    $('.section-hero').css('top', -totalT1);
+                    console.log(aboutH1, wH1, totalT1)
+                }
+
+                // Initial adjustment
+                adjustHeroBg1();
+
+                // Adjust on window resize
+                $(window).on('resize', function () {
+                    adjustHeroBg1();
+                });
+            });
+            
+
             // Preload all images before initializing the scroll handler
             preloadImages();
 
@@ -94,7 +119,7 @@
 
             // Create the ScrollTrigger
             ScrollTrigger.create({
-                trigger: ".hero-main",
+                trigger: ".section-hero",
                 start: "top top",
                 end: "98% bottom",
                 scrub: true,
@@ -110,13 +135,116 @@
             $(document).ready(function () {
 
                 $('.transition-column-top').each(function (index) {
-                    $(this).css('transition-delay', (index * 0.1) + 's');
+                    $(this).css('transition-delay', (index * 0.002) + 's');
                 })
                 $('.transition-column-bottom').each(function (index) {
-                    $(this).css('transition-delay', (index * 0.1) + 's');
+                    $(this).css('transition-delay', (index * 0.002) + 's');
                 })
 
             });
+
+
+
+
+            // Timeline for .our-team-wrap
+            let nextSection = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".next-section-trigger",
+                    scrub: 1,
+                    start: '30% bottom',
+                    end: '70% 80%',
+                    markers: true,
+                }
+            });
+
+            if ($(window).width() > 768) {
+                // Timeline for .our-team-wrap
+                let nextSectionTranstion = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".next-section-trigger",
+                        start: 'top bottom',
+                        toggleActions: "play none none reset",
+                    }
+                });
+
+
+                nextSection.fromTo($('.transition-column-top'), {
+                    yPercent: -110,
+                    /*duration: 0.5,*/
+                }, {
+                    yPercent: 0,
+                    /*duration: 0.5,*/
+                }, ">")
+                nextSection.fromTo($('.transition-column-bottom'), {
+                    yPercent: 110,
+                    /*duration: 0.5,*/
+                }, {
+                    yPercent: 0,
+                    /*duration: 0.5,*/
+                }, "<")
+
+
+
+                // Timeline for .our-team-wrap
+                let backNextSection = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".next-section-trigger",
+                        scrub: 1,
+                        start: '100% center',
+                        end: '150% center',
+                        markers: true,
+                    }
+                });
+                backNextSection.to($('.transition-column-top'), {
+                    yPercent: -110,
+                    duration: 0.5,
+                }, ">")
+                backNextSection.to($('.transition-column-bottom'), {
+                    yPercent: 110,
+                    duration: 0.5,
+                }, "<")
+
+
+                nextSectionTranstion.fromTo($('.transition-wrap'), {
+                    visibility: "hidden",
+                }, {
+                    visibility: "visible",
+                }, ">")
+                
+                
+                
+                
+            } else {
+                
+                let nextSection1 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".next-section-trigger",
+                        scrub: 1,
+                        start: '70% 70%',
+                        end: '90% 100%',
+                        markers: true,
+                    }
+                });
+                
+                nextSection.fromTo($('.section-hero'), {
+                    opacity: 1,
+                    duration: 0.5,
+                }, {
+                    opacity: 0,
+                    duration: 0.5,
+                }, "<")
+                
+                nextSection1.fromTo($('.companies-wrap'), {
+                    opacity: 0,
+                    duration: 0.5,
+                }, {
+                    opacity: 1,
+                    duration: 0.5,
+                }, "<")
+                
+                
+                
+            }
 
 
 
@@ -175,15 +303,16 @@
                 link.parent('li').addClass("bullet-active");
             }
 
-            $(window).on('load', function () {
+            /*$(window).on('load', function () {
                 gsap.registerPlugin(ScrollTrigger);
+
 
                 let tl3dToLogo = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".companies-wrap",
                         scrub: true,
                         start: "-2 100%",
-                        markers: true,
+                        
                         onEnter: () => {
                             lenis.stop();
                             gsap.to(".transition-wrap", {
@@ -223,7 +352,7 @@
                         trigger: ".pos-blank-spacer",
                         scrub: true,
                         start: "99% 100%",
-                        markers: true,
+                        
                         onEnter: () => {
                             document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
                             setTimeout(function () {
@@ -266,7 +395,7 @@
                         }
                     }
                 });
-            });
+            });*/
 
 
             let tlClip = gsap.timeline({
@@ -456,6 +585,23 @@
 
 
         } else if ($('.about-page').length) {
+            $(document).ready(function () {
+                function adjustHeroBg1() {
+                    var aboutH1 = $('.about-space-thumb').outerHeight();
+                    var wH1 = $(window).outerHeight();
+                    var totalT1 = aboutH1 - wH1;
+                    $('.about-space-thumb').css('top', -totalT1);
+                    console.log(aboutH1, wH1, totalT1)
+                }
+
+                // Initial adjustment
+                adjustHeroBg1();
+
+                // Adjust on window resize
+                $(window).on('resize', function () {
+                    adjustHeroBg1();
+                });
+            });
             $(document).ready(function () {
                 var $teamComponents = $('.team-component');
                 var $teamContents = $('.team-content');
@@ -688,15 +834,6 @@
             }, ">");
 
 
-            let tlMoonMove = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".about-space-wrap",
-                    start: "10% 90%",
-                    end: "60% bottom",
-                    scrub: 1,
-                }
-            });
-
 
 
             $(document).ready(function () {
@@ -720,15 +857,22 @@
 
 
 
+            let tlMoonMove = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".about-space-wrap",
+                    start: "10% 90%",
+                    end: "60% bottom",
+                    scrub: 1,
+                }
+            });
+
 
             tlMoonMove.fromTo($('.about-space-moon'), {
 
-                yPercent: -200,
-                xPercent: -460,
+                scale: 0.5,
                 duration: 1,
             }, {
-                yPercent: 0,
-                xPercent: 0,
+                scale: 1,
                 duration: 1,
             }, ">");
 

@@ -22,7 +22,7 @@
 
             // Register the ScrollTrigger plugin
             gsap.registerPlugin(ScrollTrigger);
-            
+
             // Function to initialize SplitType and create animations for each .animated-heading
             function initializeAnimations() {
                 $('.animated-heading').each(function (index, element) {
@@ -187,21 +187,18 @@
             gsap.registerPlugin(ScrollTrigger);
 
             let typeSplit = new SplitType('.anim-paragraph', {
-                types: 'lines, words, char',
+                types: 'lines, words, chars',
                 tagName: 'span'
             });
 
             $('.anim-paragraph').each(function () {
                 $(this).find('.word').each(function (index) {
                     $(this).css('transition-delay', (index * 0.03) + 's');
-                })
+                });
             });
 
             $(window).on('load', function () {
-
                 setTimeout(function () {
-
-
                     $('.anim-paragraph').each(function () {
                         let animParagraph = $(this);
 
@@ -224,9 +221,8 @@
                             }
                         });
                     });
-                }, 2000)
-
-            })
+                }, 2000);
+            });
         });
 
     })
@@ -283,4 +279,4 @@ window.addEventListener("DOMContentLoaded", (event) => {
     gsap.set("[text-split]", {
         opacity: 1
     });
-});
+}); 
