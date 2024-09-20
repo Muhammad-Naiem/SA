@@ -783,7 +783,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 .about-space-thumb{width: 100%; position: sticky; z-index: 1; top: 0;}
 .about-space-thumb figure{width: 100%;}
 .about-space-thumb figure img, .about-space-thumb video{width: 100%;}
-.about-space-moon { position: absolute; top: 19.3%; right: 16.3%; max-width: 21.5em; width: 20%; z-index: 1; will-change: transform; -webkit-transform: translate(0, 0); -ms-transform: translate(0, 0); transform: translate(0, 0);}
+.about-space-moon {position: absolute; top: 21em; right: 22.25em; max-width: 21.5em; width: 21em; z-index: 1; will-change: transform; -webkit-transform: translate(0, 0); -ms-transform: translate(0, 0); transform: translate(0, 0);}
 .about-space-moon {will-change: transform;}
 .about-space-moon img{width: 100%;}
 
@@ -837,7 +837,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 .team-component-wrap div:nth-child(9) img{max-width: 14.5em;}
 .team-component-wrap div:nth-child(10) img{max-width: 16.375em;}
 
-.team-component, .team-content { opacity: 0;  will-change: opacity; -webkit-transition: opacity 1s ease-in-out; -o-transition: opacity 1s ease-in-out; transition: opacity 1s ease-in-out; }
+.team-component{ opacity: 0;  will-change: opacity; -webkit-transition: opacity 1s ease-in-out; -o-transition: opacity 1s ease-in-out; transition: opacity 1s ease-in-out; }
 
 /* Animation for the cards */
 @-webkit-keyframes fadeIn {
@@ -865,7 +865,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     }
 }
 
-.team-component.show, .team-content.show { -webkit-animation: fadeIn 0.5s forwards; animation: fadeIn 0.5s forwards; }
+.team-component.show { -webkit-animation: fadeIn 0.5s forwards; animation: fadeIn 0.5s forwards; }
 
 /* End team Style */
 
@@ -901,16 +901,20 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 /* End draw-svg */
 
 
-.anim-paragraph .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); will-change: transform opacity;}
-.anim-paragraph.active-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); }
+.anim-paragraph .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg);  will-change: transform opacity; transition: all 0.4s ease;}
+.anim-paragraph.active-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1);}
 
 
-.anim-paragraph-alone .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); will-change: transform opacity;}
-.anim-paragraph-alone.active-custom-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); }
+.anim-paragraph-alone .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); will-change: transform opacity; transition: all 0.4s ease;}
+.anim-paragraph-alone.active-custom-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); will-change: transform opacity;}
 
 
-.after-clip-paragraph .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); will-change: transform opacity;}
-.after-clip-paragraph.active-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); }
+.anim-paragraph-delay .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg);  transition: all 0.4s ease; will-change: transform opacity; transition: all 0.4s ease;}
+.anim-paragraph-delay.active-animations .word{opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1);}
+
+
+.after-clip-paragraph .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); will-change: transform opacity; transition: all 0.4s ease;}
+.after-clip-paragraph.active-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); }
 
 
 

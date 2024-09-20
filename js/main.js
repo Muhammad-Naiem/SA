@@ -680,7 +680,7 @@
                     adjustHeroBg1();
                 });
             });
-            $(document).ready(function () {
+            /*$(document).ready(function () {
                 var $teamComponents = $('.team-component');
                 var $teamContents = $('.team-content');
                 var hasAnimated = false; // To ensure animation runs only once
@@ -739,7 +739,7 @@
                 // Observe the team-component-wrap
                 observer.observe(document.querySelector('.team-component-wrap'));
 
-            });
+            });*/
 
             $(document).ready(function () {
                 function countDecimals(val) {
@@ -806,54 +806,53 @@
             // Start Team Shown
 
             $(document).ready(function () {
-                var $teamComponents = $('.team-component');
-                var $teamContents = $('.team-content');
-                var hasAnimated = false; // To ensure animation runs only once
+                
+                let typeSplit = new SplitType('.anim-paragraph-delay', {
+                    types: 'lines, words, chars',
+                    tagName: 'span'
+                });
 
-                // Function to shuffle the team components
-                function shuffleArray(array) {
-                    for (var i = array.length - 1; i > 0; i--) {
-                        var j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                    }
-                    return array;
-                }
-                // Function to show cards in chaotic order
-                function showCards() {
-                    var $shuffledComponents = $(shuffleArray($teamComponents.toArray()));
-                    $shuffledComponents.each(function (index) {
-                        $(this).delay(index * 300).queue(function (next) {
-                            $(this).addClass('show');
-                            next();
-                        });
+                $('.anim-paragraph-delay').each(function () {
+                    $(this).find('.word').each(function (index) {
+                        $(this).css('transition-delay', (index * 0.03) + 's');
                     });
-                }
-                // Function to show typing effect on text
-                function showTypingEffect() {
-                    setTimeout(function () {
-                        $teamContents.addClass('show');
-                    }, $teamComponents.length * 300); // Adjust delay based on the total animation time
-                }
-                // Function to handle animation when element is in view
-                function handleAnimation() {
-                    if (hasAnimated) return; // Prevent re-triggering animations
-                    showCards();
-                    showTypingEffect();
-                    hasAnimated = true; // Set flag to prevent re-triggering
-                }
-                // Set up IntersectionObserver
-                var observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            handleAnimation();
-                            observer.unobserve(entry.target); // Stop observing once animated
+                });
+                
+                
+                
+                
+                var $animation_elements = $('.team-component');
+                var $window = $(window);
+                var allShown = false;
+
+                function check_if_in_view() {
+                    var window_height = $window.height() / 1.2;
+                    var window_top_position = $window.scrollTop();
+                    var window_bottom_position = (window_top_position + window_height);
+
+                    $animation_elements.each(function () {
+                        var $element = $(this);
+                        var element_height = $element.outerHeight();
+                        var element_top_position = $element.offset().top;
+                        var element_bottom_position = (element_top_position + element_height);
+
+                        if (element_top_position <= window_bottom_position) {
+                            $element.addClass('show');
+                        }else{
+                            $element.removeClass('show');
                         }
                     });
-                }, {
-                    threshold: 0.1
-                }); // Adjust threshold if necessary
-                // Observe the team-component-wrap
-                observer.observe(document.querySelector('.team-component-wrap'));
+
+                    // Check if all team-components have the 'show' class
+                    if ($animation_elements.length === $('.team-component.show').length && !allShown) {
+                        $('.team-content .anim-paragraph-delay').addClass('active-animations');
+                    }else{
+                         $('.team-content .anim-paragraph-delay').removeClass('active-animations');
+                    }
+                }
+
+                $window.on('scroll resize', check_if_in_view);
+                $window.trigger('scroll');
             });
 
             let tlBgAlpha = gsap.timeline({
@@ -890,6 +889,28 @@
                 opacity: 1,
                 duration: 1,
             })
+            
+            
+            let textSlidein = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".potential-sticky",
+                    start: "100% 90%",
+                    end: "150% bottom",
+                    scrub: 1,
+                    
+                }
+            });
+            
+            textSlidein.fromTo($('.potential-headwinds-title p'), {
+                 y: "30em",
+                duration: 1,
+            }, {
+                y: "0em",
+                duration: 1,
+            }, ">");
+
+          
+            
 
             
             $(document).ready(function () {
@@ -992,8 +1013,8 @@
 
             let tlMoonMove = gsap.timeline({
                 scrollTrigger: {
-                    trigger: ".about-space-wrap",
-                    start: "10% 90%",
+                    trigger: ".about-space-thumb",
+                    start: "20% 90%",
                     end: "60% bottom",
                     scrub: 1,
                 }
@@ -1001,7 +1022,6 @@
 
 
             tlMoonMove.fromTo($('.about-space-moon'), {
-
                 scale: 0.5,
                 duration: 1,
             }, {
@@ -1014,9 +1034,9 @@
 
             let tlLunarMove = gsap.timeline({
                 scrollTrigger: {
-                    trigger: ".potential-headwinds-wrap",
-                    start: "10% 90%",
-                    end: "70% bottom",
+                    trigger: ".potential-sticky",
+                    start: "80% 100%",
+                    end: "100% bottom",
                     scrub: 1,
                 }
             });
