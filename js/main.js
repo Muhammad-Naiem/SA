@@ -109,7 +109,7 @@
                     adjustHeroBg1();
                 });
             });
-            
+
 
             // Preload all images before initializing the scroll handler
             preloadImages();
@@ -132,6 +132,7 @@
             });
 
 
+
             $(document).ready(function () {
 
                 $('.transition-column-top').each(function (index) {
@@ -144,6 +145,84 @@
             });
 
 
+            function initializeCustomAnimations() {
+                // Select the specific elements
+                let element = $('.animated-heading-opacity');
+                let headingAnim = element.find('.heading-anim-opacity');
+
+                // Split the text into lines and words
+                let typeSplit = new SplitType(headingAnim, {
+                    types: 'lines, words',
+                    tagName: 'span'
+                });
+
+                // Duplicate the inner h2 tag of .custom-animated-heading and add a class name custom-animated-lizard
+                var heading2 = headingAnim.clone().addClass('animated-lizard');
+                element.append(heading2);
+
+                // Store each word in a span tag with the class name anim-word within an array and remove the texts/words from .word class
+                var wordsArray = [];
+                element.find('.animated-lizard .word').each(function () {
+                    var $this = $(this);
+                    var eachWord = $this.text();
+                    wordsArray.push('<span class="anim-word">' + eachWord + '</span>');
+                    $this.text(''); // Clear the .word text
+                });
+
+                function setWordWidths() {
+                    element.find('.animated-lizard .word').each(function (wordIndex) {
+                        var $this = $(this);
+                        var originalWord = element.find('.heading-anim-opacity .word').eq(wordIndex);
+                        var wordWidth = originalWord.outerWidth();
+                        $this.css('width', wordWidth);
+                    });
+                }
+
+                setWordWidths(); // Set initial widths
+
+                $(window).resize(function () {
+                    setWordWidths(); // Adjust widths on window resize
+                });
+
+                function animateWords() {
+                    element.find('.animated-lizard .word').each(function (wordIndex) {
+                        var $this = $(this);
+                        var animWord = wordsArray[wordIndex];
+
+                        setTimeout(function () {
+                            $this.html(animWord);
+                            gsap.fromTo($this.find('.anim-word'), {
+                                color: "#DC4444"
+                            }, {
+                                color: "#ffffff",
+                                duration: 0.7,
+                                ease: "power3.inOut",
+                            });
+                        }, 100 * wordIndex);
+                    });
+                }
+
+                // Create ScrollTrigger instances
+                ScrollTrigger.create({
+                    trigger: element,
+                    start: "top 5%", // Adjust the start position as needed
+                    onEnter: function () {
+                        setTimeout(function () {
+                            animateWords();
+                        }, 500); // Add a 1-second delay before starting the animation
+                    },
+                    onLeaveBack: function () {
+                        // Reset the animation
+                        element.find('.animated-lizard .word').each(function () {
+                            $(this).text(''); // Clear the .word text
+                        });
+                    }
+                });
+            }
+
+            // Call the function to initialize animations
+            initializeCustomAnimations();
+
 
 
             // Timeline for .our-team-wrap
@@ -153,7 +232,7 @@
                     scrub: 1,
                     start: '30% bottom',
                     end: '70% 80%',
-                    markers: true,
+
                 }
             });
 
@@ -192,7 +271,7 @@
                         scrub: 1,
                         start: '100% center',
                         end: '150% center',
-                        markers: true,
+
                     }
                 });
                 backNextSection.to($('.transition-column-top'), {
@@ -210,22 +289,22 @@
                 }, {
                     visibility: "visible",
                 }, ">")
-                
-                
-                
-                
+
+
+
+
             } else {
-                
+
                 let nextSection1 = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".next-section-trigger",
                         scrub: 1,
                         start: '70% 70%',
                         end: '90% 100%',
-                        markers: true,
+
                     }
                 });
-                
+
                 nextSection.fromTo($('.section-hero'), {
                     opacity: 1,
                     duration: 0.5,
@@ -233,7 +312,7 @@
                     opacity: 0,
                     duration: 0.5,
                 }, "<")
-                
+
                 nextSection1.fromTo($('.companies-wrap'), {
                     opacity: 0,
                     duration: 0.5,
@@ -241,9 +320,9 @@
                     opacity: 1,
                     duration: 0.5,
                 }, "<")
-                
-                
-                
+
+
+
             }
 
 
@@ -478,10 +557,9 @@
                 if ($(window).width() > 768) {
                     var yStart = "50% 90%";
                     var yEnd = "70% 50%";
-                    console.log('desk')
                 } else {
-                    var yStart = "30% 90%";
-                    var yEnd = "50% 50%";
+                    var yStart = "50% 90%";
+                    var yEnd = "70% 50%";
                 }
 
                 // Link timelines to scroll position
@@ -565,7 +643,7 @@
                 $(this).css('animation-delay', (index * 0.25) + 's');
             })
 
-            $(document).ready(function () {
+            /*$(document).ready(function () {
                 function adjustHeroBg1() {
                     var aboutH1 = $('.our-pertner-wrap').outerHeight();
                     var wH1 = $(window).outerHeight();
@@ -581,7 +659,7 @@
                 $(window).on('resize', function () {
                     adjustHeroBg1();
                 });
-            });
+            });*/
 
 
         } else if ($('.about-page').length) {
@@ -784,7 +862,7 @@
                     start: "60% 90%",
                     end: "95% bottom",
                     scrub: 1,
-                    markers: true
+
                 }
             });
 
@@ -804,7 +882,7 @@
                     start: "100% 90%",
                     end: "120% bottom",
                     scrub: 1,
-                    markers: true
+                    
                 }
             });
 
@@ -813,6 +891,61 @@
                 duration: 1,
             })
 
+            
+            $(document).ready(function () {
+                gsap.registerPlugin(ScrollTrigger);
+
+                let customTypeSplit = new SplitType('.anim-paragraph-alone', {
+                    types: 'lines, words, chars',
+                    tagName: 'span'
+                });
+
+                $('.anim-paragraph-alone').each(function () {
+                    $(this).find('.word').each(function (index) {
+                        $(this).css('transition-delay', (index * 0.03) + 's');
+                    });
+                });
+
+                
+                $(window).on('load', function () {
+                    setTimeout(function () {
+                        $('.anim-paragraph-alone').each(function () {
+                            let customAnimParagraph = $(this);
+
+                            ScrollTrigger.create({
+                                trigger: customAnimParagraph,
+                                start: 'top 20%',
+                                onEnter: function () {
+                                    gsap.to(customAnimParagraph, {
+                                        className: 'anim-paragraph-alone active-custom-animation',
+                                        duration: 1,
+                                        ease: 'power1.inOut',
+                                        
+                                    });
+                                },
+                                onLeaveBack: function () {
+                                    gsap.to(customAnimParagraph, {
+                                        className: 'anim-paragraph-alone',
+                                        duration: 1,
+                                        ease: 'power1.inOut'
+                                    });
+                                }
+                            });
+                        });
+                    }, 2000);
+                });
+            });
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             let tlMarsAlpha = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".about-space-wrap",

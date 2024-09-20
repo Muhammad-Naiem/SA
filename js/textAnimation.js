@@ -87,7 +87,7 @@
                             onEnter: function () {
                                 setTimeout(function () {
                                     animateWords();
-                                }, 1000); // Add a 1-second delay before starting the animation
+                                }, 500); // Add a 1-second delay before starting the animation
                             },
                             onLeaveBack: function () {
                                 // Reset the animation

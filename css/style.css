@@ -208,18 +208,19 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 .hero-bg img{width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover}
 
 .section-content-inner div.title { max-width: 35.5em; }
-.section-content-wrap:first-child .section-content-inner div.title {max-width: 53.5em;}
+.section-content-wrap:first-child .section-content-inner div.title {max-width: 54.5em;}
 .our-team-wrap .section-content-inner div.title {max-width: 35em;}
 
-.animated-heading { position: relative; }
+.animated-heading, .animated-heading-opacity { position: relative; }
 .animated-heading-h1 { position: relative; }
-.heading-anim { opacity: 0.2; }
-.heading-anim.animated-lizard { opacity: 1; position: absolute; left: 0; top: 0; width: 100%;}
-.heading-anim dfn dfn span.anim-word { color: var(--valencia-red) !important; }
+.heading-anim, .heading-anim-opacity { opacity: 0.2; }
+.heading-anim.animated-lizard, .heading-anim-opacity.animated-lizard { opacity: 1; position: absolute; left: 0; top: 0; width: 100%;}
+.heading-anim dfn dfn span.anim-word, .heading-anim-opacity dfn dfn span.anim-word { color: var(--valencia-red) !important; }
 .heading-anim-h1 { opacity: 0.2; }
 .heading-anim-h1.animated-lizard { opacity: 1; position: absolute; left: 0; top: 0; width: 100%;}
 .heading-anim-h1 dfn span.anim-word { color: var(--valencia-red) !important; }
-.heading-anim dfn dfn{display: inline !important;}
+.heading-anim span > dfn, .heading-anim-opacity span > dfn{display: inline !important;}
+.heading-anim span > dfn dfn, .heading-anim-opacity span > dfn dfn{display: inline !important;}
 /*.align-from-right .svg-line{text-align: left !important}*/
 
 .hero-line { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -902,6 +903,12 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 
 .anim-paragraph .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); will-change: transform opacity;}
 .anim-paragraph.active-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); }
+
+
+.anim-paragraph-alone .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); will-change: transform opacity;}
+.anim-paragraph-alone.active-custom-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); }
+
+
 .after-clip-paragraph .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); will-change: transform opacity;}
 .after-clip-paragraph.active-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); }
 
@@ -941,8 +948,11 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .scroll-icon-wrap {left: 1.25em; display: none;}
 
     .section-content-wrap {height: 50.75em; padding: 9.375em 0 3.125em;}
-    .section-hero-inner { height: 50.75em;}
+    .section-hero-inner { height: 50.75em; height: 100vh;}
     .section-content-inner h2.h2 dfn{display: inline !important;}
+    
+    
+    .has-sticky{height: 50.75em; height: 100vh; padding: 9.375em 0 3.125em;}
     
     div#section-2 { padding-bottom: 35em; }
     .transition-wrap{display: none;}
@@ -1128,7 +1138,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .about-us-details-row.multi-desc .about-us-details-row-text p:first-child {display: none;}
     .about-us-details-row.multi-desc .about-us-details-row-text p:last-child {display: block;}
 
-    .about-us-details-row-case svg { width: 1.563em; -webkit-margin-after: -.3em; margin-block-end: -.3em; }
+    .about-us-details-row-case svg { width: 1.563em;}
     .about-us-thumb { width: 56.5em; top: auto; left: 41%; will-change: transform; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%); bottom: 5.5%; }
     .about-us-thumb img { max-width: 100%;}
     .about-us-content-text { width: 100%; -webkit-margin-before: 8.2em; margin-block-start: 8.2em; }
@@ -1154,7 +1164,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .potential-headwinds-title p { font-size: 0.75em; margin: 0; max-width: 28em; }
     .potential-headwinds-shape .desk{display: none;}
     .potential-headwinds-shape .mobi{display: block;}
-    .potential-headwinds-thumb { width: 85.5%; margin-top: -1.5em;}
+    .potential-headwinds-thumb { width: 18em; margin-top: -1.5em;}
     .results-wrap { padding-block: 4.3em 0; margin-top: -9.4em;}
     .results-wrap .container{padding-inline: 1em; margin-top: -13.1em;}
     .results-card-item-wrap { margin-top: 12.1em; gap: 18.475em; margin-bottom: 12em; }
@@ -1237,7 +1247,6 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     /* End About Style */
 
 
-    .has-sticky{height: 50.75em; padding: 9.375em 0 3.125em;}
     
     
     /* Start Preloader Style */
