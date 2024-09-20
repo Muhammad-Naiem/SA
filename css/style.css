@@ -526,7 +526,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 
 .meeting-profile-focus-point{max-width: 6.5em; width: 52%; position: absolute; top: 50%; left: 50%; will-change: transform; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
 .meeting-profile-focus-point svg{width: 100%;}
-.schedule-meeting-profile-content { width: 100%; max-width: 12.688em; position: absolute; top: 12.5%; right: 2.438em; }
+.schedule-meeting-profile-content {width: 100%; max-width: 12.688em; position: absolute; top: 12.5%; right: 2.438em;}
 .schedule-meeting-profile-content h5{color: var(--white); font-family: var(--General-Sans-Medium); font-size: 1.25em; font-style: normal; font-weight: normal; line-height: 120%; letter-spacing: -0.025em; margin-bottom: 0.3em;}
 .schedule-meeting-profile-content p{color: #767676; font-size: 1em; line-height: 120%; letter-spacing: -0.02em;}
 
@@ -625,7 +625,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 .about-hero-thumb{width: 50%; max-width: 58.5em; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; position: fixed; left: 50%; top: 58%; will-change: transform; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); mix-blend-mode: exclusion; pointer-events: none;}
 .about-hero-thumb video{width: 100%;}
 .about-hero-content{width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack:end; -ms-flex-pack:end; justify-content:flex-end;}
-.about-hero-content p{color: #EBEBEB;text-align: justify; text-justify: inter-word; font-family: var(--General-Sans-Regular); font-size: 1em; font-style: normal; font-weight: normal; line-height: normal; max-width: 15em;}
+.about-hero-content p{color: #EBEBEB; text-align: justify; text-justify: inter-word; font-family: var(--General-Sans-Regular); font-size: 1em; font-style: normal; font-weight: normal; line-height: normal; max-width: 15em;}
 
 
 .about-focus-wrap{width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-flow: column; flex-flow: column; position: relative; min-height: 100vh; padding-block: 6.063em 9%; overflow: hidden;}
@@ -645,7 +645,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 .number { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; width: 2.188vw; -webkit-box-align: center; -ms-flex-align: center; align-items: center; color: rgba(255, 255, 255, 0.50); text-align: justify; font-family: var(--General-Sans-Regular); font-size: 0.75em; font-style: normal; font-weight: normal; line-height: normal; margin-bottom: 2.9em; }
 .number svg.number-line { width: 0.501em; height: 1.001em; }
 
-.about-focus-item-content p{color: #EBEBEB; text-align: justify; font-family: var(--General-Sans-Regular); font-size: 1em; font-style: normal; font-weight: normal; line-height: normal;}
+.about-focus-item-content p{color: #EBEBEB; text-align: left; font-family: var(--General-Sans-Regular); font-size: 1em; font-style: normal; font-weight: normal; line-height: normal;}
 
 
 /* Start about-us Style */
@@ -843,7 +843,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 .team-component-wrap div:nth-child(9) img{max-width: 14.5em;}
 .team-component-wrap div:nth-child(10) img{max-width: 16.375em;}
 
-.team-component{ opacity: 0;  will-change: opacity; -webkit-transition: opacity 1s ease-in-out; -o-transition: opacity 1s ease-in-out; transition: opacity 1s ease-in-out; }
+.team-component{opacity: 0; will-change: opacity, transform; transform: scale(0.5); transition: all 0.2s ease;}
 
 /* Animation for the cards */
 @-webkit-keyframes fadeIn {
@@ -871,7 +871,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     }
 }
 
-.team-component.show { -webkit-animation: fadeIn 0.5s forwards; animation: fadeIn 0.5s forwards; }
+.team-component.show { transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1); opacity: 1;transform: scale(1); }
 
 /* End team Style */
 
@@ -907,15 +907,15 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 /* End draw-svg */
 
 
-.anim-paragraph .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg);  will-change: transform opacity;}
+.anim-paragraph .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg);  will-change: transform opacity; transition: all 0.2s ease;}
 .anim-paragraph.active-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1);}
 
 
-.anim-paragraph-alone .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); will-change: transform opacity;}
+.anim-paragraph-alone .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); will-change: transform opacity; transition: all 0.2s ease;}
 .anim-paragraph-alone.active-custom-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); will-change: transform opacity;}
 
 
-.anim-paragraph-delay .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg);  transition: all 0.4s ease; will-change: transform opacity;}
+.anim-paragraph-delay .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg);  transition: all 0.4s ease; will-change: transform opacity; transition: all 0.2s ease;}
 .anim-paragraph-delay.active-animations .word{opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1);}
 
 
@@ -943,7 +943,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
         
-    body{font-size: 4.267vw; -webkit-overflow-scrolling: auto;}
+    body{font-size: 4.267vw;}
     p { font-size: 0.75em; }
     .container { padding-inline: 1.25em;}
 
@@ -1223,6 +1223,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     
 
     .combine-wrapper {width: 100%; height: 100%; position: relative; }
+    .combine-wrapper:before{position: absolute; top: 0; left: 0; width: 100%; content: ''; height: 14.5em; background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.00)), to(#000)); background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.00) 0%, #000 100%); background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #000 100%); z-index: 2;}
     .bg-mobi{display: block; width: 100%; height: 100%; position: absolute; top: 0; z-index: 1;}
     .bg-mobi img{position: sticky; top: 0; width: 100%;}
     

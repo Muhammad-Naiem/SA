@@ -11,11 +11,11 @@
 
         // Initialize Lenis with different configurations based on the device type
         const lenis = new Lenis({
-            duration: 3, // No smooth scrolling on mobile
+            duration: isMobile() ? 0 : 3, // No smooth scrolling on mobile
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
             direction: 'vertical', // vertical, horizontal
             gestureDirection: 'vertical', // vertical, horizontal, both
-            smooth: true, // Smooth scrolling only on desktop
+            smooth: !isMobile(), // Smooth scrolling only on desktop
             mouseMultiplier: 1,
             smoothTouch: false,
             touchMultiplier: 4,
@@ -41,11 +41,7 @@
         requestAnimationFrame(raf);
 
 
-        lenis.stop();
 
-        $(window).on('load', function () {
-            lenis.start();
-        });
 
         // }
 
@@ -487,19 +483,18 @@
             let tlClip = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".supply-chain-wrap",
-                    scrub: true,
-                    start: "98% 100%",
-                    end: "150% 100%",
+                    start: "130% 100%",
+                    toggleActions: "play none none reverse",
 
                 }
             });
 
             tlClip.fromTo(".supply-chain-wrap", {
                     clipPath: "inset(50% 0 50% 0)",
-                    duration: 0.1,
+                    duration: 1,
                 }, {
                     clipPath: "inset(0% 0 0% 0)",
-                    duration: 0.1,
+                    duration: 1,
                 },
                 ">"
             );
@@ -519,11 +514,7 @@
                 tagName: 'span'
             });
 
-            $('.after-clip-paragraph').each(function () {
-                $(this).find('.word').each(function (index) {
-                    $(this).css('transition-delay', (index * 0.03) + 's');
-                })
-            });
+
 
             $('.after-clip-paragraph').each(function () {
                 let animParagraph = $(this);
@@ -534,17 +525,28 @@
 
 
                     onEnter: function () {
+                        $('.after-clip-paragraph').each(function () {
+                            $(this).find('.word').each(function (index) {
+                                $(this).css('transition-delay', (index * 0.03) + 's');
+                            })
+                        });
                         gsap.to(animParagraph, {
                             className: 'after-clip-paragraph active-animation',
                             duration: 1,
-                            ease: 'power1.inOut'
+                            ease: 'power1.inOut',
                         });
                     },
                     onLeaveBack: function () {
+                        $('.after-clip-paragraph').each(function () {
+                            $(this).find('.word').each(function (index) {
+                                $(this).css('transition-delay', (index * 0) + 's');
+                            })
+                        });
                         gsap.to(animParagraph, {
                             className: 'after-clip-paragraph',
                             duration: 1,
-                            ease: 'power1.inOut'
+                            ease: 'power1.inOut',
+
                         });
                     }
                 });
@@ -562,19 +564,20 @@
 
 
                 if ($(window).width() > 768) {
-                    var yStart = "50% 90%";
-                    var yEnd = "70% 50%";
+                    var yStart = "150% 100%";
+                    var yEnd = "200% 100%";
                 } else {
-                    var yStart = "50% 90%";
-                    var yEnd = "70% 50%";
+                    var yStart = "150% 100%";
+                    var yEnd = "200% 100%";
                 }
 
                 // Link timelines to scroll position
                 function createScrollTrigger(triggerElement, timeline) {
                     // Reset tl when scroll out of view past bottom of screen
                     ScrollTrigger.create({
-                        trigger: ".companies-wrap",
-                        start: yStart,
+                        trigger: ".supply-chain-wrap",
+                        start: "50% 90%",
+                        
                         onLeaveBack: () => {
                             timeline.progress(0);
                             timeline.pause();
@@ -582,8 +585,9 @@
                     });
                     // Play tl when scrolled into view (60% from top of screen)
                     ScrollTrigger.create({
-                        trigger: ".companies-wrap",
+                        trigger: ".supply-chain-wrap",
                         start: yStart,
+                        
                         onEnter: () => timeline.play()
                     });
                 }
@@ -591,10 +595,11 @@
                 $(".after-clip-heading").each(function (index) {
                     let tl = gsap.timeline({
                         scrollTrigger: {
-                            trigger: ".companies-wrap",
+                            trigger: ".supply-chain-wrap",
                             start: yStart,
                             end: yEnd,
                             scrub: true,
+                            
                         }
                     });
                     tl.from($(this).find(".word"), {
@@ -813,62 +818,85 @@
             // Start Team Shown
 
             $(document).ready(function () {
-                
                 let typeSplit = new SplitType('.anim-paragraph-delay', {
                     types: 'lines, words, chars',
                     tagName: 'span'
                 });
 
-                $('.anim-paragraph-delay').each(function () {
-                    $(this).find('.word').each(function (index) {
-                        $(this).css('transition-delay', (index * 0.03) + 's');
+                function setTransitionDelay(selector, delay) {
+                    $(selector).each(function () {
+                        $(this).find('.word').each(function (index) {
+                            $(this).css('transition-delay', (index * delay) + 's');
+                        });
                     });
-                });
-                
-                
-                
-                
-                var $animation_elements = $('.team-component');
+                }
+
+                var $animationElements = $('.team-component');
                 var $window = $(window);
-                var allShown = false;
 
-                function check_if_in_view() {
-                    var window_height = $window.height() / 1.2;
-                    var window_top_position = $window.scrollTop();
-                    var window_bottom_position = (window_top_position + window_height);
+                function checkIfInView() {
+                    var windowHeight = $window.height() / 1.2;
+                    var windowTopPosition = $window.scrollTop();
+                    var windowBottomPosition = (windowTopPosition + windowHeight);
 
-                    $animation_elements.each(function () {
+                    $animationElements.each(function () {
                         var $element = $(this);
-                        var element_height = $element.outerHeight();
-                        var element_top_position = $element.offset().top;
-                        var element_bottom_position = (element_top_position + element_height);
+                        var elementTopPosition = $element.offset().top;
+                        var elementBottomPosition = (elementTopPosition + $element.outerHeight());
 
-                        if (element_top_position <= window_bottom_position) {
+                        if (elementTopPosition <= windowBottomPosition) {
+                            setTransitionDelay('.anim-paragraph-delay', 0.03);
                             $element.addClass('show');
-                        }else{
+                        } else {
+                            setTransitionDelay('.anim-paragraph-delay', 0);
                             $element.removeClass('show');
                         }
                     });
 
-                    // Check if all team-components have the 'show' class
-                    if ($animation_elements.length === $('.team-component.show').length && !allShown) {
-                        $('.team-content .anim-paragraph-delay').addClass('active-animations');
-                    }else{
-                         $('.team-content .anim-paragraph-delay').removeClass('active-animations');
+                    if ($window.width() > 768) {
+                        if ($animationElements.length === $('.team-component.show').length) {
+                            $('.team-content .anim-paragraph-delay').addClass('active-animations');
+                        } else {
+                            $('.team-content .anim-paragraph-delay').removeClass('active-animations');
+                        }
                     }
                 }
 
-                $window.on('scroll resize', check_if_in_view);
-                $window.trigger('scroll');
-            });
+                function checkIfNewInView() {
+                    var windowHeight = $window.height() / 1.2;
+                    var windowTopPosition = $window.scrollTop();
+                    var windowBottomPosition = (windowTopPosition + windowHeight);
 
+                    $('.anim-paragraph-delay').each(function () {
+                        var $element = $(this);
+                        var elementTopPosition = $element.offset().top;
+                        var elementBottomPosition = (elementTopPosition + $element.outerHeight());
+
+                        if (elementTopPosition <= windowBottomPosition) {
+                            $element.addClass('active-animations');
+                            setTransitionDelay('.anim-paragraph-delay', 0.03);
+                        } else {
+                            $element.removeClass('active-animations');
+                            setTransitionDelay('.anim-paragraph-delay', 0);
+                        }
+                    });
+                }
+
+                $window.on('scroll resize', checkIfInView);
+                $window.trigger('scroll');
+
+                if ($window.width() < 769) {
+                    $window.on('scroll resize', checkIfNewInView);
+                    $window.trigger('scroll');
+                }
+            });
             let tlBgAlpha = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".blank-trigger",
                     start: "40% 90%",
                     end: "80% bottom",
                     scrub: 1,
-                    
+
 
                 }
             });
@@ -889,8 +917,8 @@
                     start: "90% 90%",
                     end: "120% bottom",
                     scrub: 1,
-                    
-                    
+
+
                 }
             });
 
@@ -898,30 +926,30 @@
                 opacity: 1,
                 duration: 1,
             })
-            
-            
+
+
             let textSlidein = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".potential-sticky",
                     start: "100% 90%",
                     end: "150% bottom",
                     scrub: 1,
-                    
+
                 }
             });
-            
+
             textSlidein.fromTo($('.potential-headwinds-title p'), {
-                 y: "30em",
+                y: "30em",
                 duration: 1,
             }, {
                 y: "0em",
                 duration: 1,
             }, ">");
 
-          
-            
 
-            
+
+
+
             $(document).ready(function () {
                 gsap.registerPlugin(ScrollTrigger);
 
@@ -930,13 +958,9 @@
                     tagName: 'span'
                 });
 
-                $('.anim-paragraph-alone').each(function () {
-                    $(this).find('.word').each(function (index) {
-                        $(this).css('transition-delay', (index * 0.03) + 's');
-                    });
-                });
 
-                
+
+
                 $(window).on('load', function () {
                     setTimeout(function () {
                         $('.anim-paragraph-alone').each(function () {
@@ -946,14 +970,24 @@
                                 trigger: customAnimParagraph,
                                 start: 'top 40%',
                                 onEnter: function () {
+                                    $('.anim-paragraph-alone').each(function () {
+                                        $(this).find('.word').each(function (index) {
+                                            $(this).css('transition-delay', (index * 0.03) + 's');
+                                        });
+                                    });
                                     gsap.to(customAnimParagraph, {
                                         className: 'anim-paragraph-alone active-custom-animation',
                                         duration: 1,
                                         ease: 'power1.inOut',
-                                        
+
                                     });
                                 },
                                 onLeaveBack: function () {
+                                    $('.anim-paragraph-alone').each(function () {
+                                        $(this).find('.word').each(function (index) {
+                                            $(this).css('transition-delay', (index * 0) + 's');
+                                        });
+                                    });
                                     gsap.to(customAnimParagraph, {
                                         className: 'anim-paragraph-alone',
                                         duration: 1,
@@ -965,10 +999,10 @@
                     }, 2000);
                 });
             });
-            
-            
-            
-            
+
+
+
+
             let tlMarsAlpha = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".about-space-wrap",
@@ -1014,9 +1048,10 @@
             let tlMoonMove = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".about-space-thumb",
-                    start: "20% 90%",
-                    end: "60% bottom",
+                    start: "0% 100%",
+                    end: "90% 50%",
                     scrub: 1,
+                    
                 }
             });
 
@@ -1030,14 +1065,20 @@
             }, ">");
 
 
+            tlMoonMove.to($('.potential-headwinds-thumb'), {
+                scale: 0.5,
+                duration: 1,
+            }, "<");
+
 
 
             let tlLunarMove = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".potential-sticky",
-                    start: "80% 100%",
+                    start: "50% 100%",
                     end: "100% bottom",
                     scrub: 1,
+                    
                 }
             });
 
@@ -1051,11 +1092,6 @@
             }, ">");
 
 
-
-            tlMoonMove.to($('.potential-headwinds-thumb'), {
-                scale: 0.5,
-                duration: 1,
-            }, ">");
 
 
 

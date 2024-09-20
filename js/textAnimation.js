@@ -328,11 +328,7 @@
                 tagName: 'span'
             });
 
-            $('.anim-paragraph').each(function () {
-                $(this).find('.word').each(function (index) {
-                    $(this).css('transition-delay', (index * 0.03) + 's');
-                });
-            });
+
 
             $(window).on('load', function () {
                 if ($('body').hasClass('home-page')) {
@@ -344,13 +340,23 @@
                                 trigger: animParagraph,
                                 start: 'top 90%',
                                 onEnter: function () {
+                                    $('.anim-paragraph').each(function () {
+                                        $(this).find('.word').each(function (index) {
+                                            $(this).css('transition-delay', (index * 0.03) + 's');
+                                        });
+                                    });
                                     gsap.to(animParagraph, {
                                         className: 'anim-paragraph active-animation',
                                         duration: 1,
-                                        ease: 'power1.inOut'
+                                        ease: 'power1.inOut',
                                     });
                                 },
                                 onLeaveBack: function () {
+                                    $('.anim-paragraph').each(function () {
+                                        $(this).find('.word').each(function (index) {
+                                            $(this).css('transition-delay', (index * 0) + 's');
+                                        });
+                                    });
                                     gsap.to(animParagraph, {
                                         className: 'anim-paragraph',
                                         duration: 1,
@@ -369,13 +375,23 @@
                             trigger: animParagraph,
                             start: 'top 90%',
                             onEnter: function () {
+                                $('.anim-paragraph').each(function () {
+                                    $(this).find('.word').each(function (index) {
+                                        $(this).css('transition-delay', (index * 0.03) + 's');
+                                    });
+                                });
                                 gsap.to(animParagraph, {
                                     className: 'anim-paragraph active-animation',
                                     duration: 1,
-                                    ease: 'power1.inOut'
+                                    ease: 'power1.inOut',
                                 });
                             },
                             onLeaveBack: function () {
+                                $('.anim-paragraph').each(function () {
+                                    $(this).find('.word').each(function (index) {
+                                        $(this).css('transition-delay', (index * 0) + 's');
+                                    });
+                                });
                                 gsap.to(animParagraph, {
                                     className: 'anim-paragraph',
                                     duration: 1,
