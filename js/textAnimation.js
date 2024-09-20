@@ -1,6 +1,142 @@
 (function ($) {
     $(function () {
+        // $(window).on('load', function () {
+        //     var counter = 0;
+        //     var interval = setInterval(function () {
+        //         var formattedCounter = ('000' + counter).slice(-3); // Format counter to always show three digits
+        //         $('.preloader-text span').text(formattedCounter + '%');
+        //         $('.preloader-container-progress span').css('width', counter + '%');
+        //         counter++;
+        //         if (counter > 100) {
+        //             clearInterval(interval);
+
+        //             setTimeout(function () {
+        //                 $('body').addClass('loaded');
+        //                 setTimeout(function () {
+        //                     // Initialize animations for all .animated-heading elements
+        //                     initializeAnimations();
+        //                 }, 100);
+        //             }, 1000);
+        //         }
+        //     }, 50); // Adjust the interval time as needed
+
+        //     // Register the ScrollTrigger plugin
+        //     gsap.registerPlugin(ScrollTrigger);
+
+        //     // Function to initialize SplitType and create animations for each .animated-heading
+        //     function initializeAnimations() {
+        //         $('.animated-heading').each(function (index, element) {
+        //             // Split the text into lines and words
+        //             let typeSplit = new SplitType($(element).find('.heading-anim'), {
+        //                 types: 'lines, words',
+        //                 tagName: 'span'
+        //             });
+
+        //             // Duplicate the inner h2 tag of .animated-heading and add a class name animated-lizard
+        //             var heading2 = $(element).find('.heading-anim').clone().addClass('animated-lizard');
+        //             $(element).append(heading2);
+
+        //             // Store each word in a span tag with the class name anim-word within an array and remove the texts/words from .word class
+        //             var wordsArray = [];
+        //             $(element).find('.animated-lizard .word').each(function () {
+        //                 var $this = $(this);
+        //                 var eachWord = $this.text();
+        //                 wordsArray.push('<span class="anim-word">' + eachWord + '</span>');
+        //                 $this.text(''); // Clear the .word text
+        //             });
+
+        //             function setWordWidths() {
+        //                 $(element).find('.animated-lizard .word').each(function (wordIndex) {
+        //                     var $this = $(this);
+        //                     var originalWord = $(element).find('.heading-anim .word').eq(wordIndex);
+        //                     var wordWidth = originalWord.outerWidth();
+        //                     $this.css('width', wordWidth);
+        //                 });
+        //             }
+
+        //             setWordWidths(); // Set initial widths
+
+        //             $(window).resize(function () {
+        //                 setWordWidths(); // Adjust widths on window resize
+        //             });
+
+        //             setTimeout(function () {
+        //                 // Function to add markup with transition using GSAP and ScrollTrigger
+        //                 function animateWords() {
+        //                     $(element).find('.animated-lizard .word').each(function (wordIndex) {
+        //                         var $this = $(this);
+        //                         var animWord = wordsArray[wordIndex];
+
+        //                         setTimeout(function () {
+        //                             $this.html(animWord);
+        //                             gsap.fromTo($this.find('.anim-word'), {
+        //                                 color: "#DC4444"
+        //                             }, {
+        //                                 color: "#ffffff",
+        //                                 duration: 0.7,
+        //                                 ease: "power3.inOut",
+        //                             });
+        //                         }, 100 * wordIndex);
+        //                     });
+        //                 }
+
+        //                 // Create ScrollTrigger instances
+        //                 ScrollTrigger.create({
+        //                     trigger: element,
+        //                     start: "top 97%", // Adjust the start position as needed
+        //                     onEnter: function () {
+        //                         setTimeout(function () {
+        //                             animateWords();
+        //                         }, 500); // Add a 1-second delay before starting the animation
+        //                     },
+        //                     onLeaveBack: function () {
+        //                         // Reset the animation
+        //                         $(element).find('.animated-lizard .word').each(function () {
+        //                             $(this).text(''); // Clear the .word text
+        //                         });
+        //                     }
+        //                 });
+        //             }, 100);
+        //         });
+        //     }
+        // });
+
+        // function countDecimals(value) {
+        //     if (Math.floor(value) === value) return 0;
+        //     return value.toString().split(".")[1].length || 0;
+        // }
+
+        // function updateValue($element, finalValue, decimalPlaces) {
+        //     $({
+        //         countNum: 0
+        //     }).animate({
+        //         countNum: finalValue
+        //     }, {
+        //         duration: 3000,
+        //         easing: 'swing',
+        //         step: function () {
+        //             $element.text(('000' + this.countNum.toFixed(decimalPlaces)).slice(-3) + '%');
+        //         },
+        //         complete: function () {
+        //             $element.text(('000' + finalValue.toFixed(decimalPlaces)).slice(-3) + '%');
+        //         }
+        //     });
+        // }
+
+
+
         $(window).on('load', function () {
+            if ($('.home-page').length) {
+                console.log("Initializing preloader");
+                initializePreloader();
+            } else {
+                console.log("Initializing animations");
+                initializeAnimations(); // Initialize heading animations immediately on other pages
+            }
+        });
+
+        function initializePreloader() {
+            console.log("Preloader started");
             var counter = 0;
             var interval = setInterval(function () {
                 var formattedCounter = ('000' + counter).slice(-3); // Format counter to always show three digits
@@ -19,87 +155,88 @@
                     }, 1000);
                 }
             }, 50); // Adjust the interval time as needed
+        }
 
-            // Register the ScrollTrigger plugin
-            gsap.registerPlugin(ScrollTrigger);
+        // Register the ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
 
-            // Function to initialize SplitType and create animations for each .animated-heading
-            function initializeAnimations() {
-                $('.animated-heading').each(function (index, element) {
-                    // Split the text into lines and words
-                    let typeSplit = new SplitType($(element).find('.heading-anim'), {
-                        types: 'lines, words',
-                        tagName: 'span'
-                    });
+        // Function to initialize SplitType and create animations for each .animated-heading
+        function initializeAnimations() {
+            console.log("Animations initialized");
+            $('.animated-heading').each(function (index, element) {
+                // Split the text into lines and words
+                let typeSplit = new SplitType($(element).find('.heading-anim'), {
+                    types: 'lines, words',
+                    tagName: 'span'
+                });
 
-                    // Duplicate the inner h2 tag of .animated-heading and add a class name animated-lizard
-                    var heading2 = $(element).find('.heading-anim').clone().addClass('animated-lizard');
-                    $(element).append(heading2);
+                // Duplicate the inner h2 tag of .animated-heading and add a class name animated-lizard
+                var heading2 = $(element).find('.heading-anim').clone().addClass('animated-lizard');
+                $(element).append(heading2);
 
-                    // Store each word in a span tag with the class name anim-word within an array and remove the texts/words from .word class
-                    var wordsArray = [];
-                    $(element).find('.animated-lizard .word').each(function () {
+                // Store each word in a span tag with the class name anim-word within an array and remove the texts/words from .word class
+                var wordsArray = [];
+                $(element).find('.animated-lizard .word').each(function () {
+                    var $this = $(this);
+                    var eachWord = $this.text();
+                    wordsArray.push('<span class="anim-word">' + eachWord + '</span>');
+                    $this.text(''); // Clear the .word text
+                });
+
+                function setWordWidths() {
+                    $(element).find('.animated-lizard .word').each(function (wordIndex) {
                         var $this = $(this);
-                        var eachWord = $this.text();
-                        wordsArray.push('<span class="anim-word">' + eachWord + '</span>');
-                        $this.text(''); // Clear the .word text
+                        var originalWord = $(element).find('.heading-anim .word').eq(wordIndex);
+                        var wordWidth = originalWord.outerWidth();
+                        $this.css('width', wordWidth);
                     });
+                }
 
-                    function setWordWidths() {
+                setWordWidths(); // Set initial widths
+
+                $(window).resize(function () {
+                    setWordWidths(); // Adjust widths on window resize
+                });
+
+                setTimeout(function () {
+                    // Function to add markup with transition using GSAP and ScrollTrigger
+                    function animateWords() {
                         $(element).find('.animated-lizard .word').each(function (wordIndex) {
                             var $this = $(this);
-                            var originalWord = $(element).find('.heading-anim .word').eq(wordIndex);
-                            var wordWidth = originalWord.outerWidth();
-                            $this.css('width', wordWidth);
+                            var animWord = wordsArray[wordIndex];
+
+                            setTimeout(function () {
+                                $this.html(animWord);
+                                gsap.fromTo($this.find('.anim-word'), {
+                                    color: "#DC4444"
+                                }, {
+                                    color: "#ffffff",
+                                    duration: 0.7,
+                                    ease: "power3.inOut",
+                                });
+                            }, 100 * wordIndex);
                         });
                     }
 
-                    setWordWidths(); // Set initial widths
-
-                    $(window).resize(function () {
-                        setWordWidths(); // Adjust widths on window resize
-                    });
-
-                    setTimeout(function () {
-                        // Function to add markup with transition using GSAP and ScrollTrigger
-                        function animateWords() {
-                            $(element).find('.animated-lizard .word').each(function (wordIndex) {
-                                var $this = $(this);
-                                var animWord = wordsArray[wordIndex];
-
-                                setTimeout(function () {
-                                    $this.html(animWord);
-                                    gsap.fromTo($this.find('.anim-word'), {
-                                        color: "#DC4444"
-                                    }, {
-                                        color: "#ffffff",
-                                        duration: 0.7,
-                                        ease: "power3.inOut",
-                                    });
-                                }, 100 * wordIndex);
+                    // Create ScrollTrigger instances
+                    ScrollTrigger.create({
+                        trigger: element,
+                        start: "top 97%", // Adjust the start position as needed
+                        onEnter: function () {
+                            setTimeout(function () {
+                                animateWords();
+                            }, 500); // Add a 1-second delay before starting the animation
+                        },
+                        onLeaveBack: function () {
+                            // Reset the animation
+                            $(element).find('.animated-lizard .word').each(function () {
+                                $(this).text(''); // Clear the .word text
                             });
                         }
-
-                        // Create ScrollTrigger instances
-                        ScrollTrigger.create({
-                            trigger: element,
-                            start: "top 97%", // Adjust the start position as needed
-                            onEnter: function () {
-                                setTimeout(function () {
-                                    animateWords();
-                                }, 500); // Add a 1-second delay before starting the animation
-                            },
-                            onLeaveBack: function () {
-                                // Reset the animation
-                                $(element).find('.animated-lizard .word').each(function () {
-                                    $(this).text(''); // Clear the .word text
-                                });
-                            }
-                        });
-                    }, 100);
-                });
-            }
-        });
+                    });
+                }, 100);
+            });
+        }
 
         function countDecimals(value) {
             if (Math.floor(value) === value) return 0;
@@ -198,7 +335,33 @@
             });
 
             $(window).on('load', function () {
-                setTimeout(function () {
+                if ($('body').hasClass('home-page')) {
+                    setTimeout(function () {
+                        $('.anim-paragraph').each(function () {
+                            let animParagraph = $(this);
+
+                            ScrollTrigger.create({
+                                trigger: animParagraph,
+                                start: 'top 90%',
+                                onEnter: function () {
+                                    gsap.to(animParagraph, {
+                                        className: 'anim-paragraph active-animation',
+                                        duration: 1,
+                                        ease: 'power1.inOut'
+                                    });
+                                },
+                                onLeaveBack: function () {
+                                    gsap.to(animParagraph, {
+                                        className: 'anim-paragraph',
+                                        duration: 1,
+                                        ease: 'power1.inOut'
+                                    });
+                                }
+                            });
+                        });
+                    }, 2000);
+                } else {
+                    // Initialize animations immediately on other pages
                     $('.anim-paragraph').each(function () {
                         let animParagraph = $(this);
 
@@ -221,7 +384,7 @@
                             }
                         });
                     });
-                }, 2000);
+                }
             });
         });
 
@@ -279,4 +442,4 @@ window.addEventListener("DOMContentLoaded", (event) => {
     gsap.set("[text-split]", {
         opacity: 1
     });
-}); 
+});

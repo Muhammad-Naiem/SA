@@ -2,7 +2,7 @@
     $(function () {
         gsap.registerPlugin(ScrollTrigger);
 
-        
+
         // if ($(window).width() > 768) {
         // Function to detect if the user is on a mobile device
         function isMobile() {
@@ -39,6 +39,13 @@
         }
 
         requestAnimationFrame(raf);
+
+
+        lenis.stop();
+
+        $(window).on('load', function () {
+            lenis.start();
+        });
 
         // }
 
