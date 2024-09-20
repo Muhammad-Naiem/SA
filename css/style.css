@@ -1162,7 +1162,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .leadership-roles-categories-col.logo-col img{height: 16px;}
     .leadership-roles-categories-col.serial-no { width: 15%; }
     .leadership-roles-wrap { -webkit-padding-after: 5em; padding-block-end: 5em; }
-    .potential-headwinds-wrap{padding-block:4.2em 0; min-height: auto;}
+    .potential-headwinds-wrap{padding-block:4.2em 0;}
     .potential-headwinds-wrap .container{padding-inline: 1em;}
     .potential-headwinds-title h2 { margin-bottom: 0.975em; font-size: 1.875em; }
     .potential-headwinds-title h2 br{display: none;}
@@ -1213,6 +1213,9 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .number {width: 8.27vw; margin-bottom: 2em;}
     .about-us-details-row-case .number { width: 16.27vw; font-size: 0.75em; margin-bottom: 0;}
     .leadership-roles-inner{-webkit-margin-end: 0;margin-inline-end: 0;}
+    
+    .bg-mobi{width: 100%; height: 48.309em; position: fixed; top: 0;}
+    
     
     .results-line-group.mobi{display: block; width: 100%; height: 48.309em; position: sticky; top: 0;}
     .results-line-group.desk{display: none;}
