@@ -857,10 +857,11 @@
 
             let tlBgAlpha = gsap.timeline({
                 scrollTrigger: {
-                    trigger: ".about-us-wrap",
-                    start: "60% 90%",
-                    end: "95% bottom",
+                    trigger: ".blank-trigger",
+                    start: "40% 90%",
+                    end: "80% bottom",
                     scrub: 1,
+                    markers: true
 
                 }
             });
@@ -877,10 +878,11 @@
 
             let aboutFadein = gsap.timeline({
                 scrollTrigger: {
-                    trigger: ".about-us-wrap",
-                    start: "100% 90%",
+                    trigger: ".blank-trigger",
+                    start: "90% 90%",
                     end: "120% bottom",
                     scrub: 1,
+                    markers: true
                     
                 }
             });
