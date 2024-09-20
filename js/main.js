@@ -861,7 +861,7 @@
                     start: "40% 90%",
                     end: "80% bottom",
                     scrub: 1,
-                    markers: true
+                    
 
                 }
             });
@@ -882,7 +882,7 @@
                     start: "90% 90%",
                     end: "120% bottom",
                     scrub: 1,
-                    markers: true
+                    
                     
                 }
             });
@@ -937,7 +937,8 @@
 
                             ScrollTrigger.create({
                                 trigger: customAnimParagraph,
-                                start: 'top 20%',
+                                start: 'top 40%',
+                                markers: true,
                                 onEnter: function () {
                                     gsap.to(customAnimParagraph, {
                                         className: 'anim-paragraph-alone active-custom-animation',
@@ -981,7 +982,7 @@
 
 
 
-            tlMarsAlpha.fromTo($('.about-space-wrap, .results-line-group-wrap, .potential-headwinds-thumb'), {
+            tlMarsAlpha.fromTo($('.about-space-wrap, .results-line-group-wrap, .potential-headwinds-thumb, .bg-mobi'), {
                 opacity: 1,
                 duration: 1,
             }, {
@@ -1065,7 +1066,7 @@
             let videoClipPath = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".leadership-roles-wrap",
-                    start: "30% 100%",
+                    start: "10% 100%",
                     end: "70% bottom",
                     scrub: 1,
                 }
@@ -1080,6 +1081,30 @@
                 clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
                 duration: 1,
             }, ">");
+
+
+            function justifySplitText(container) {
+                const elements = container.querySelectorAll('.anim-paragraph');
+                const containerWidth = container.clientWidth;
+                let totalWidth = 0;
+
+                elements.forEach(element => {
+                    totalWidth += element.clientWidth;
+                });
+
+                const spaceWidth = (containerWidth - totalWidth) / (elements.length - 1);
+
+                elements.forEach((element, index) => {
+                    if (index < elements.length - 1) {
+                        element.style.marginRight = `${spaceWidth}px`;
+                    }
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const container = document.querySelector('.anim-paragraph');
+                justifySplitText(container);
+            });
 
 
         }

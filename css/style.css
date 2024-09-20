@@ -76,6 +76,8 @@ header, section, main, footer {width: 100%; display: -webkit-box; display: -ms-f
 .h2{color: var(--white); font-family: var(--General-Sans-Regular); font-size: 3.75em; font-style: normal; font-weight: normal; line-height: 120%; letter-spacing: -0.025em;}
 .h2 dfn dfn{color: var(--valencia-red);}
 
+.text-white{color: var(--white);}
+
 p{font-size: 1.125em;}
 
 .relative { position: relative; }
@@ -402,6 +404,8 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
             transform: translatey(0em);
   }
 }
+
+.bg-mobi{display: none;}
 /* End Our Pertner Style */
 
 /* Start supply-chain-wrap */
@@ -719,14 +723,15 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 .potential-headwinds-shape svg{display: block; width: 100%; height: 100%; position: absolute;}
 .potential-headwinds-shape .mobi{display: none;}
 .potential-headwinds-wrap .container{z-index: 1;}
-.potential-headwinds-inner{width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-flow: row wrap; flex-flow: row wrap; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;}
+.potential-headwinds-inner{width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-flow: row wrap; flex-flow: row wrap; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; padding-top: 3em;}
 .potential-headwinds-title{width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-align: center;}
 .potential-headwinds-title h2{max-width: 23.75em; width: 100%; margin-bottom: .94em;}
 .potential-headwinds-title h2 dfn{color: rgba(55, 57, 57, 1);}
 
 .potential-headwinds-title p { max-width: 27.8em; color: #EBEBEB; text-align: center; font-size: 1em; font-style: normal; line-height: normal; margin-left: -3.5rem; }
 
-.potential-headwinds-thumb{width: 40%; max-width: 31.938em; margin-top: 1.5em; position: fixed; top: 50%; z-index: 999; transform: scale(0)}
+.potential-headwinds-thumb{width: 31.938em; max-width: 31.938em; /* margin-top: 1.5em; */ position: fixed; top: 50%; z-index: 999; transform: scale(0);}
+.potential-headwinds-thumb img{width: 100%;}
 /* End potential-headwinds Style */
 
 
@@ -945,7 +950,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .desk{display: none;}
     .mobi{display: block;}
 
-    h2.h2{font-size: 2em; letter-spacing: -0.64px;}
+    h2.h2{font-size: 2em; letter-spacing: -0.038em;}
     /* Start Home Style */
     header.header-wrap nav { width: 9.813em; top: 11vmin;}
     header.header-wrap nav ul li a { font-size: 0.75em;}
@@ -1161,12 +1166,13 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .leadership-roles-categories-row { padding-block: 0.49em; }
     .leadership-roles-categories-col.logo-col img{height: 16px;}
     .leadership-roles-categories-col.serial-no { width: 15%; }
-    .leadership-roles-wrap { -webkit-padding-after: 5em; padding-block-end: 5em; }
-    .potential-headwinds-wrap{padding-block:4.2em 0;}
+    .leadership-roles-wrap { -webkit-padding-after: 0; padding-block-end: 0em; }
+    .potential-headwinds-wrap{padding-block: 4.2em 0;}
+    .potential-sticky{padding-top: 5em;}
     .potential-headwinds-wrap .container{padding-inline: 1em;}
-    .potential-headwinds-title h2 { margin-bottom: 0.975em; font-size: 1.875em; }
+    .potential-headwinds-title h2 { margin-bottom: 0.975em; font-size: 1.875em; max-width: 11em;}
     .potential-headwinds-title h2 br{display: none;}
-    .potential-headwinds-title p { font-size: 0.75em; margin: 0; max-width: 28em; }
+    .potential-headwinds-title p { font-size: 0.75em; margin: 0; max-width: 28.25em; width: 100%;}
     .potential-headwinds-shape .desk{display: none;}
     .potential-headwinds-shape .mobi{display: block;}
     .potential-headwinds-thumb { width: 18em; margin-top: -1.5em;}
@@ -1180,6 +1186,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .results-card-item:nth-child(even) .results-card-back-shape-wrap img.results-card-back-shape-2 { bottom: 0.5em;  left: 0.5em;}
     .results-card-title h2 { font-size: 2.5em;}
     .results-card-content p { font-size: 0.75em; max-width: 15.875em; }
+    .results-card-back-shape-wrap{display: none;}
     .results-card-back-shape-wrap img { width: 1.625em;}
     .results-card-back-shape-wrap img.results-card-back-shape-1 { top: 1.875em; right: 0.625em; }
     .results-card-back-shape-wrap img.results-card-back-shape-2 { bottom: 2em; left: 0.625em; }
@@ -1188,7 +1195,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .results-card { aspect-ratio: 1 / .84075; }
     .results-card-item:nth-child(even) .results-card-content p { max-width: 16.125em; padding-left: .5em; }
     .results-card-item:nth-child(3) .results-card-content p { max-width: 11.625em; }
-    .results-title { padding-inline: 0.25em; }
+    .results-title { padding-inline: 0.75em; }
     .results-title h2 { font-size: 1.875em; }
     .about-space-wrap {padding-block: 16.25em 0; height: 130em}
     .about-space-thumb {top: 0; }
@@ -1214,7 +1221,10 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .about-us-details-row-case .number { width: 16.27vw; font-size: 0.75em; margin-bottom: 0;}
     .leadership-roles-inner{-webkit-margin-end: 0;margin-inline-end: 0;}
     
-    .bg-mobi{width: 100%; height: 48.309em; position: fixed; top: 0;}
+
+    .combine-wrapper {width: 100%; height: 100%; position: relative; }
+    .bg-mobi{display: block; width: 100%; height: 100%; position: absolute; top: 0; z-index: 1;}
+    .bg-mobi img{position: sticky; top: 0;}
     
     
     .results-line-group.mobi{display: block; width: 100%; height: 48.309em; position: sticky; top: 0;}
