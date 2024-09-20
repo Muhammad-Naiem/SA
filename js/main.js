@@ -2,7 +2,7 @@
     $(function () {
         gsap.registerPlugin(ScrollTrigger);
 
-
+        
         // if ($(window).width() > 768) {
         // Function to detect if the user is on a mobile device
         function isMobile() {
@@ -133,16 +133,16 @@
 
 
 
-            $(document).ready(function () {
+            // $(document).ready(function () {
 
-                $('.transition-column-top').each(function (index) {
-                    $(this).css('transition-delay', (index * 0.002) + 's');
-                })
-                $('.transition-column-bottom').each(function (index) {
-                    $(this).css('transition-delay', (index * 0.002) + 's');
-                })
+            //     $('.transition-column-top').each(function (index) {
+            //         $(this).css('transition-delay', (index * 0.002) + 's');
+            //     })
+            //     $('.transition-column-bottom').each(function (index) {
+            //         $(this).css('transition-delay', (index * 0.002) + 's');
+            //     })
 
-            });
+            // });
 
 
             function initializeCustomAnimations() {
@@ -242,7 +242,7 @@
                     scrollTrigger: {
                         trigger: ".next-section-trigger",
                         start: 'top bottom',
-                        toggleActions: "play none none reset",
+                        toggleActions: "play reverse play reverse",
                     }
                 });
 
@@ -356,8 +356,8 @@
 
                 ScrollTrigger.create({
                     trigger: element[0],
-                    start: "top 20%",
-                    end: "bottom center",
+                    start: "top 70%",
+                    end: "bottom 70%",
                     onToggle: function (self) {
                         if (self.isActive) {
                             setActive($a);
@@ -938,7 +938,6 @@
                             ScrollTrigger.create({
                                 trigger: customAnimParagraph,
                                 start: 'top 40%',
-                                markers: true,
                                 onEnter: function () {
                                     gsap.to(customAnimParagraph, {
                                         className: 'anim-paragraph-alone active-custom-animation',
@@ -963,13 +962,6 @@
             
             
             
-            
-            
-            
-            
-            
-            
-            
             let tlMarsAlpha = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".about-space-wrap",
@@ -978,8 +970,6 @@
                     scrub: 1,
                 }
             });
-
-
 
 
             tlMarsAlpha.fromTo($('.about-space-wrap, .results-line-group-wrap, .potential-headwinds-thumb, .bg-mobi'), {
@@ -1082,29 +1072,6 @@
                 duration: 1,
             }, ">");
 
-
-            function justifySplitText(container) {
-                const elements = container.querySelectorAll('.anim-paragraph');
-                const containerWidth = container.clientWidth;
-                let totalWidth = 0;
-
-                elements.forEach(element => {
-                    totalWidth += element.clientWidth;
-                });
-
-                const spaceWidth = (containerWidth - totalWidth) / (elements.length - 1);
-
-                elements.forEach((element, index) => {
-                    if (index < elements.length - 1) {
-                        element.style.marginRight = `${spaceWidth}px`;
-                    }
-                });
-            }
-
-            document.addEventListener('DOMContentLoaded', () => {
-                const container = document.querySelector('.anim-paragraph');
-                justifySplitText(container);
-            });
 
 
         }
