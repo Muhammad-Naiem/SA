@@ -1,9 +1,8 @@
 (function ($) {
     $(function () {
         gsap.registerPlugin(ScrollTrigger);
+        
 
-
-        // if ($(window).width() > 768) {
         // Function to detect if the user is on a mobile device
         function isMobile() {
             return /Mobi|Android/i.test(navigator.userAgent);
@@ -30,7 +29,7 @@
             direction,
             progress
         }) => {
-
+            console.log(scroll)
         });
 
         function raf(time) {
@@ -43,7 +42,6 @@
 
 
 
-        // }
 
         $(document).ready(function () {
             var userAgent = navigator.userAgent.toLowerCase();

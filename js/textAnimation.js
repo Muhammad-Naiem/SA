@@ -123,7 +123,26 @@
         //     });
         // }
 
+// Function to detect if the user is on a mobile device
+        function isMobile() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
 
+        // Initialize Lenis with different configurations based on the device type
+        const lenis = new Lenis({
+            duration: isMobile() ? 0 : 3, // No smooth scrolling on mobile
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+            direction: 'vertical', // vertical, horizontal
+            gestureDirection: 'vertical', // vertical, horizontal, both
+            smooth: !isMobile(), // Smooth scrolling only on desktop
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 4,
+            infinite: false,
+        });
+
+
+        lenis.stop()
 
         $(window).on('load', function () {
             if ($('.home-page').length) {
@@ -132,9 +151,9 @@
             } else {
                 console.log("Initializing animations");
                 initializeAnimations(); // Initialize heading animations immediately on other pages
+                $('html').addClass('loaded')
             }
         });
-
         function initializePreloader() {
             console.log("Preloader started");
             var counter = 0;
@@ -147,10 +166,12 @@
                     clearInterval(interval);
 
                     setTimeout(function () {
-                        $('body').addClass('loaded');
+                        $('html').addClass('loaded');
                         setTimeout(function () {
                             // Initialize animations for all .animated-heading elements
                             initializeAnimations();
+                            
+                            lenis.start()
                         }, 100);
                     }, 1000);
                 }
@@ -162,6 +183,7 @@
 
         // Function to initialize SplitType and create animations for each .animated-heading
         function initializeAnimations() {
+            lenis.start()
             console.log("Animations initialized");
             $('.animated-heading').each(function (index, element) {
                 // Split the text into lines and words
@@ -225,7 +247,7 @@
                         onEnter: function () {
                             setTimeout(function () {
                                 animateWords();
-                            }, 500); // Add a 1-second delay before starting the animation
+                            }, 200); // Add a 1-second delay before starting the animation
                         },
                         onLeaveBack: function () {
                             // Reset the animation
@@ -338,11 +360,11 @@
 
                             ScrollTrigger.create({
                                 trigger: animParagraph,
-                                start: 'top 90%',
+                                start: 'top 100%',
                                 onEnter: function () {
                                     $('.anim-paragraph').each(function () {
                                         $(this).find('.word').each(function (index) {
-                                            $(this).css('transition-delay', (index * 0.03) + 's');
+                                            $(this).css('transition-delay', (index * 0.02) + 's');
                                         });
                                     });
                                     gsap.to(animParagraph, {
@@ -365,7 +387,7 @@
                                 }
                             });
                         });
-                    }, 2000);
+                    }, 500);
                 } else {
                     // Initialize animations immediately on other pages
                     $('.anim-paragraph').each(function () {
@@ -373,11 +395,11 @@
 
                         ScrollTrigger.create({
                             trigger: animParagraph,
-                            start: 'top 90%',
+                            start: 'top 100%',
                             onEnter: function () {
                                 $('.anim-paragraph').each(function () {
                                     $(this).find('.word').each(function (index) {
-                                        $(this).css('transition-delay', (index * 0.03) + 's');
+                                        $(this).css('transition-delay', (index * 0.02) + 's');
                                     });
                                 });
                                 gsap.to(animParagraph, {

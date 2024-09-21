@@ -55,7 +55,8 @@
             box-sizing: border-box;
 }
 
-html { overflow-x: hidden; }
+html { overflow: hidden; }
+html.loaded { overflow-x: hidden; overflow-y: scroll;}
 
 body {background-color: var(--black); color: var(--white); overflow: clip; font-family: var(--General-Sans-Regular); font-size: 0.833vw; font-weight: normal; line-height: normal;}
 
@@ -908,7 +909,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 
 
 .anim-paragraph .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg);  will-change: transform opacity; transition: all 0.2s ease;}
-.anim-paragraph.active-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, -webkit-transform 1.6s cubic-bezier(.14,1,.34,1); -o-transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1); transition: opacity 2.5s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1.6s cubic-bezier(.14,1,.34,1);}
+.anim-paragraph.active-animation .word { opacity: 1; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-transition: opacity 1.2s, -webkit-transform 1s cubic-bezier(.14,1,.34,1); transition: opacity 1.2s, -webkit-transform 1s cubic-bezier(.14,1,.34,1); -o-transition: opacity 1.2s, transform 1s cubic-bezier(.14,1,.34,1); transition: opacity 1.2s, transform 1s cubic-bezier(.14,1,.34,1); transition: opacity 1.2s, transform 1.6s cubic-bezier(.14,1,.34,1), -webkit-transform 1s cubic-bezier(.14,1,.34,1);}
 
 
 .anim-paragraph-alone .word { opacity: 0; -webkit-transform: translate3d(0, 20px, 0) rotate(3deg); transform: translate3d(0, 20px, 0) rotate(3deg); will-change: transform opacity; transition: all 0.2s ease;}
@@ -1006,43 +1007,56 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .our-pertner-wrap .container{padding-inline: 1.25em; height: 100%;}
     .our-pertner-inner{padding: 0; height: 100%;}
     .our-pertner-logo-wrap {margin-top: 1.5em; height: 82%;}
-
+    @keyframes float_Y {
+      0% {
+        -webkit-transform: translatey(0em);
+                transform: translatey(0em);
+      }
+      50% {
+        -webkit-transform: translatey(-0.538em);
+                transform: translatey(-0.538em);
+      }
+      100% {
+        -webkit-transform: translatey(0em);
+                transform: translatey(0em);
+      }
+    }
     .our-pertner-logo{padding: 0.813em; background: radial-gradient(96.1% 96.1% at 50% 50%, #040404 38.41%, #DC4444 64.1%);;}
-    .our-pertner-logo:nth-child(1) { max-width: 6em; top: 34%; left: auto; right: 0; bottom: auto; width: 18.512vh; }
-    .our-pertner-logo:nth-child(1) img{max-width: 4em;}
-    .our-pertner-logo:nth-child(2) { max-width: 6.5em; top: 38.5%; left: 28%; width: 18vh; }
-    .our-pertner-logo:nth-child(2) img{max-width: 3em;}
-    .our-pertner-logo:nth-child(3) { max-width: 5em; top: auto; bottom: 25%; right: auto; left: 32%; width: 13vh; }
-    .our-pertner-logo:nth-child(3) img{max-width: 4.5em;}
-    .our-pertner-logo:nth-child(4) { max-width: 5.5em; top: 3%; left: 0.5%; width: 17.19vh; }
-    .our-pertner-logo:nth-child(4) img{max-width: 3em;}
-    .our-pertner-logo:nth-child(5) { max-width: 5em; top: auto; bottom: 46.5%; left: 0%; width: 13vh; }
-    .our-pertner-logo:nth-child(5) img{max-width: 3em;}
-    .our-pertner-logo:nth-child(6) { max-width: 5.5em; right: auto; left: 0; top: auto; bottom: 10%; width: 16vh; }
-    .our-pertner-logo:nth-child(6) img{max-width: 4em;}
-    .our-pertner-logo:nth-child(7) { max-width: 4em; top: auto; left: auto; right: 0%; bottom: 4%; }
-    .our-pertner-logo:nth-child(7) img{max-width: 2.5em;}
-    .our-pertner-logo:nth-child(8) { max-width: 4.75em; left: auto; top: auto; right: 22%; bottom: 16%; width: 12vh; }
-    .our-pertner-logo:nth-child(8) img{max-width: 3em;}
-    .our-pertner-logo:nth-child(9) { max-width: 5.5em; top: auto; bottom: 29%; right: auto; left: 2%; width: 14vh; }
-    .our-pertner-logo:nth-child(9) img{max-width: 3.5em;}
-    .our-pertner-logo:nth-child(10) { left: 33%; max-width: 5.5em; top: 5%; width: 17.025vh; bottom: auto; }
-    .our-pertner-logo:nth-child(10) img{max-width: 3.2em;}
-    .our-pertner-logo:nth-child(11) { max-width: 3em; top: auto; bottom: 14.5%; right: auto; left: 34%; width: 9vh; }
-    .our-pertner-logo:nth-child(11) img{max-width: 2em;}
-    .our-pertner-logo:nth-child(12) { max-width: 4.5em; right: auto; left: 39%; top: auto; bottom: 0; width: 13vh; }
+    .our-pertner-logo:nth-child(1) { max-width: 6.5em; top: 34%; left: auto; right: 0; bottom: auto; width: 18.512vh; }
+    .our-pertner-logo:nth-child(1) img{max-width: 4.188em;}
+    .our-pertner-logo:nth-child(2) { max-width: 6.688em; top: 38.5%; left: 28%; width: 20.331vh; }
+    .our-pertner-logo:nth-child(2) img{max-width: 3.188em;}
+    .our-pertner-logo:nth-child(3) { max-width: 5.813em; top: auto; bottom: 25%; right: auto; left: 33%; width: 15.372vh; }
+    .our-pertner-logo:nth-child(3) img{max-width: 4.75em;}
+    .our-pertner-logo:nth-child(4) { max-width: 6.5em; top: 2%; left: 0.5%; width: 17.19vh; }
+    .our-pertner-logo:nth-child(4) img{max-width: 3.375em;}
+    .our-pertner-logo:nth-child(5) { max-width: 5.563em; top: auto; bottom: 43.5%; left: 0%; width: 14.711vh; }
+    .our-pertner-logo:nth-child(5) img{max-width: 3.438em;}
+    .our-pertner-logo:nth-child(6) { max-width: 6.875em; right: auto; left: 0; top: auto; bottom: 6%; width: 18.182vh; }
+    .our-pertner-logo:nth-child(6) img{max-width: 4.125em;}
+    .our-pertner-logo:nth-child(7) { max-width: 4.938em; top: auto; left: auto; right: 0%; bottom: 4%; }
+    .our-pertner-logo:nth-child(7) img{max-width: 2.875em;}
+    .our-pertner-logo:nth-child(8) { max-width: 5.188em; left: auto; top: auto; right: 22%; bottom: 16%; width: 13.719vh; }
+    .our-pertner-logo:nth-child(8) img{max-width: 3.313em;}
+    .our-pertner-logo:nth-child(9) { max-width: 6.313em; top: auto; bottom: 26%; right: auto; left: 2%; width: 16.694vh; }
+    .our-pertner-logo:nth-child(9) img{max-width: 3.813em;}
+    .our-pertner-logo:nth-child(10) { left: 33%; max-width: 6.438em; top: 5%; width: 17.025vh; bottom: auto; }
+    .our-pertner-logo:nth-child(10) img{max-width: 3.5em;}
+    .our-pertner-logo:nth-child(11) { max-width: 3.875em; top: auto; bottom: 14.5%; right: auto; left: 34%; width: 10.248vh; }
+    .our-pertner-logo:nth-child(11) img{max-width: 2.25em;}
+    .our-pertner-logo:nth-child(12) { max-width: 5.5em; right: auto; left: 39%; top: auto; bottom: 0; width: 14.545vh; }
     .our-pertner-logo:nth-child(12) img{max-width: 1.563em;}
-    .our-pertner-logo:nth-child(13) { max-width: 5.5em; top: 21%; left: 1%; bottom: auto; width: 15vh; }
-    .our-pertner-logo:nth-child(13) img{max-width: 3.25em;}
-    .our-pertner-logo:nth-child(14) { max-width: 5.25em; top: 0; left: auto; right: 3%; width: 15vh; }
-    .our-pertner-logo:nth-child(14) img{max-width: 3em;}
-    .our-pertner-logo:nth-child(15) { left: auto; right: 8%; max-width: 5.25em; top: auto; bottom: 30%; width: 15vh; }
-    .our-pertner-logo:nth-child(16) { right: auto; left: 34%; bottom: auto; top: 24%; max-width: 4.5em; width: 12vh; }
-    .our-pertner-logo:nth-child(16) img{max-width: 3em;}
-    .our-pertner-logo:nth-child(17) { top: auto; bottom: 19%; right: 0; max-width: 4em; width: 10vh; }
-    .our-pertner-logo:nth-child(17) img{max-width: 1.5em;}
-    .our-pertner-logo:nth-child(18) { top: 16.6%; left: auto; right: 11%; width: 15vh; max-width: 5.5em; }
-    .our-pertner-logo:nth-child(18) img{max-width: 2.25em;}
+    .our-pertner-logo:nth-child(13) { max-width: 6.75em; top: 21%; left: 1%; bottom: auto; width: 17.851vh; }
+    .our-pertner-logo:nth-child(13) img{max-width: 3.813em;}
+    .our-pertner-logo:nth-child(14) { max-width: 6.313em; top: 0; left: auto; right: 3%; width: 16.694vh; }
+    .our-pertner-logo:nth-child(14) img{max-width: 3.125em;}
+    .our-pertner-logo:nth-child(15) { left: auto; right: 8%; max-width: 6.438em; top: auto; bottom: 30%; width: 17.025vh; }
+    .our-pertner-logo:nth-child(16) { right: auto; left: 34%; bottom: auto; top: 24%; max-width: 5.188em; width: 13.719vh; }
+    .our-pertner-logo:nth-child(16) img{max-width: 3.313em;}
+    .our-pertner-logo:nth-child(17) { top: auto; bottom: 19%; right: 0; max-width: 4.75em; width: 12.562vh; }
+    .our-pertner-logo:nth-child(17) img{max-width: 1.938em;}
+    .our-pertner-logo:nth-child(18) { top: 16.6%; left: auto; right: 11%; width: 17.025vh; max-width: 6.438em; }
+    .our-pertner-logo:nth-child(18) img{max-width: 2.75em;}
     /* End Our Pertner Style */
     
     
@@ -1210,7 +1224,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .team-content p { font-size: 0.625em; max-width: 13.4em; width: 100%; line-height: 1.4;}
     .team-content h6 { font-size: 0.75em; max-width: 26vw; }
     .team-component{min-height: 12.9em; padding: 0.75em;}
-    .team-content{padding: 1.4em 0.75em 0.75em;}
+    .team-content{padding: 1.4em 0.75em 0.75em;} 
     .team-component img {min-width: 3.625em; max-width: 8.813em;}
     .team-component-wrap .blank{display: none;}
     .team-btn{-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center; margin-top: 2.7em;}
