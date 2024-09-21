@@ -233,103 +233,37 @@
                 scrollTrigger: {
                     trigger: ".next-section-trigger",
                     scrub: 1,
-                    start: '30% bottom',
-                    end: '70% 80%',
+                    start: '50% bottom',
+                    end: '80% 80%',
 
                 }
             });
 
-            if ($(window).width() > 768) {
-                // Timeline for .our-team-wrap
-                let nextSectionTranstion = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: ".next-section-trigger",
-                        start: 'top bottom',
-                        toggleActions: "play reverse play reverse",
-                    }
-                });
+            let nextSection1 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".next-section-trigger",
+                    scrub: 1,
+                    start: '100% 70%',
+                    end: '130% 100%',
 
+                }
+            });
 
-                nextSection.fromTo($('.transition-column-top'), {
-                    yPercent: -110,
-                    /*duration: 0.5,*/
-                }, {
-                    yPercent: 0,
-                    /*duration: 0.5,*/
-                }, ">")
-                nextSection.fromTo($('.transition-column-bottom'), {
-                    yPercent: 110,
-                    /*duration: 0.5,*/
-                }, {
-                    yPercent: 0,
-                    /*duration: 0.5,*/
-                }, "<")
+            nextSection.fromTo($('.section-hero'), {
+                opacity: 1,
+                duration: 0.5,
+            }, {
+                opacity: 0,
+                duration: 0.5,
+            }, "<")
 
-
-
-                // Timeline for .our-team-wrap
-                let backNextSection = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: ".next-section-trigger",
-                        scrub: 1,
-                        start: '100% center',
-                        end: '150% center',
-
-                    }
-                });
-                backNextSection.to($('.transition-column-top'), {
-                    yPercent: -110,
-                    duration: 0.5,
-                }, ">")
-                backNextSection.to($('.transition-column-bottom'), {
-                    yPercent: 110,
-                    duration: 0.5,
-                }, "<")
-
-
-                nextSectionTranstion.fromTo($('.transition-wrap'), {
-                    visibility: "hidden",
-                }, {
-                    visibility: "visible",
-                }, ">")
-
-
-
-
-            } else {
-
-                let nextSection1 = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: ".next-section-trigger",
-                        scrub: 1,
-                        start: '70% 70%',
-                        end: '90% 100%',
-
-                    }
-                });
-
-                nextSection.fromTo($('.section-hero'), {
-                    opacity: 1,
-                    duration: 0.5,
-                }, {
-                    opacity: 0,
-                    duration: 0.5,
-                }, "<")
-
-                nextSection1.fromTo($('.companies-wrap'), {
-                    opacity: 0,
-                    duration: 0.5,
-                }, {
-                    opacity: 1,
-                    duration: 0.5,
-                }, "<")
-
-
-
-            }
-
-
-
+            nextSection1.fromTo($('.companies-wrap'), {
+                opacity: 0,
+                duration: 0.5,
+            }, {
+                opacity: 1,
+                duration: 0.5,
+            }, "<")
 
 
             // Timeline for .our-team-wrap
@@ -385,129 +319,101 @@
                 link.parent('li').addClass("bullet-active");
             }
 
-            /*$(window).on('load', function () {
-                gsap.registerPlugin(ScrollTrigger);
+
+            //            ScrollTrigger.create({
+            //                trigger: ".supply-chain-wrap",
+            //                start: "130% 100%", // Adjusted start point for better triggering
+            //                end: "140% 100%", // Adjusted end point for better triggering
+            //                markers: true,
+            //                
+            //                onEnter: function () {
+            //                    console.log('onEnter triggered');
+            //                    
+            //                    gsap.to('.supply-chain-wrap', {
+            //                        clipPath: "inset(0% 0 0% 0)",
+            //                        duration: 1,
+            //                        onComplete: function () {
+            //                            console.log('Animation complete enter');
+            //                            document.querySelector('.video-trigger').play();
+            //                        }
+            //                    });
+            //                },
+            //                onLeaveBack: function () {
+            //                    console.log('onLeaveBack triggered');
+            //                    
+            //                    gsap.to('.supply-chain-wrap', {
+            //                        clipPath: "inset(50% 0 50% 0)",
+            //                        duration: 1,
+            //                        onComplete: function () {
+            //                            console.log('Animation complete leave');
+            //                            document.querySelector('.video-trigger').pause();
+            //                        }
+            //                    });
+            //                }
+            //            });
+
+            //            ScrollTrigger.create({
+            //                trigger: ".supply-chain-wrap",
+            //                start: "130% 100%",
+            //                markers: true,
+            //            });
 
 
-                let tl3dToLogo = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: ".companies-wrap",
-                        scrub: true,
-                        start: "-2 100%",
-                        
-                        onEnter: () => {
-                            lenis.stop();
-                            gsap.to(".transition-wrap", {
-                                display: 'flex',
-                                onComplete: function () {
-                                    document.querySelector('.transition-wrap').classList.add('add-layer-transiton');
-                                    setTimeout(function () {
-                                        lenis.start();
-                                        lenis.scrollTo('.companies-wrap', {
-                                            offset: 0,
-                                            duration: 0.5,
-                                            easing: (t) => t, // Linear easing
-                                            onComplete: function () {
-                                                setTimeout(function () {
-                                                    document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
-                                                    ScrollTrigger.refresh(); // Ensure ScrollTrigger updates its calculations
-                                                }, 500); // Adjust the delay as needed
-                                            }
-                                        });
-                                    }, 1500);
-                                }
-                            });
-                        },
-                        onLeaveBack: () => {
-                            document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
-                            setTimeout(function () {
-                                gsap.to(".transition-wrap", {
-                                    display: 'none',
-                                });
-                            }, 800);
-                        }
-                    }
-                });
-
-                let spacerFullHeight1 = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: ".pos-blank-spacer",
-                        scrub: true,
-                        start: "99% 100%",
-                        
-                        onEnter: () => {
-                            document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
-                            setTimeout(function () {
-                                gsap.to(".transition-wrap", {
-                                    display: 'none',
-                                });
-                                document.querySelectorAll('.companies-logo-wrap').forEach(logo => {
-                                    logo.classList.add('start-clip-anim');
-                                });
-                                document.querySelectorAll('.companies-logo').forEach(logo => {
-                                    const img = logo.querySelectorAll('.companies-logo-icon img')[0];
-                                    if (img) {
-                                        img.style.opacity = '1';
-                                    }
-                                });
-                            }, 800);
-                        },
-                        onLeaveBack: () => {
-                            lenis.stop();
-                            gsap.to(".transition-wrap", {
-                                display: 'flex',
-                                onComplete: function () {
-                                    document.querySelector('.transition-wrap').classList.add('add-layer-transiton');
-                                    setTimeout(function () {
-                                        lenis.start();
-                                        lenis.scrollTo('.our-team-wrap', {
-                                            offset: -5,
-                                            duration: 0.5,
-                                            easing: (t) => t, // Linear easing
-                                            onComplete: function () {
-                                                setTimeout(function () {
-                                                    document.querySelector('.transition-wrap').classList.remove('add-layer-transiton');
-                                                    ScrollTrigger.refresh(); // Ensure ScrollTrigger updates its calculations
-                                                }, 500); // Adjust the delay as needed
-                                            }
-                                        });
-                                    }, 1500);
-                                }
-                            });
-                        }
-                    }
-                });
-            });*/
-
-
-            let tlClip = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".supply-chain-wrap",
-                    start: "130% 100%",
-                    toggleActions: "play none none reverse",
-
+            ScrollTrigger.create({
+                trigger: ".supply-chain-wrap",
+                start: "130% 100%",
+                toggleActions: "play none none reverse",
+                markers: true,
+                onEnter: function () {
+                    const video = document.querySelector('.video-trigger');
+                    video.currentTime = 0; // Reset video to start
+                    video.play();
+                    console.log('Video playing');
+                },
+                onLeaveBack: function () {
+                    const video = document.querySelector('.video-trigger');
+                    video.pause();
+                    console.log('Video paused');
                 }
             });
 
-            tlClip.fromTo(".supply-chain-wrap", {
-                    clipPath: "inset(50% 0 50% 0)",
-                    duration: 1,
-                }, {
-                    clipPath: "inset(0% 0 0% 0)",
-                    duration: 1,
-                },
-                ">"
-            );
 
-            tlClip.fromTo(".companies-bg", {
-                    clipPath: "inset(0% 0 0% 0)",
-                    duration: 0.1,
-                }, {
-                    clipPath: "inset(50% 0 50% 0)",
-                    duration: 0.1,
-                },
-                ">"
-            );
+                        let tlClip = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: ".supply-chain-wrap",
+                                start: "130% 100%",
+                                toggleActions: "play none none reverse",
+            
+                            }
+                        });
+            
+                        tlClip.fromTo(".supply-chain-wrap", {
+                                clipPath: "inset(50% 0 50% 0)",
+                                duration: 1,
+                                onComplete: function () {
+                                    document.querySelector('.video-trigger').pause();
+                                    console.log('leave')
+                                }
+                            }, {
+                                clipPath: "inset(0% 0 0% 0)",
+                                duration: 1,
+                                onComplete: function () {
+                                    document.querySelector('.video-trigger').play();
+                                    console.log('Enter')
+                                }
+                            },
+                            ">"
+                        );
+
+//            tlClip.fromTo(".companies-bg", {
+//                    clipPath: "inset(0% 0 0% 0)",
+//                    duration: 0.1,
+//                }, {
+//                    clipPath: "inset(50% 0 50% 0)",
+//                    duration: 0.1,
+//                },
+//                ">"
+//            );
 
             let typeSplit = new SplitType('.after-clip-paragraph', {
                 types: 'lines, words, char',
@@ -577,7 +483,7 @@
                     ScrollTrigger.create({
                         trigger: ".supply-chain-wrap",
                         start: "50% 90%",
-                        
+
                         onLeaveBack: () => {
                             timeline.progress(0);
                             timeline.pause();
@@ -587,7 +493,7 @@
                     ScrollTrigger.create({
                         trigger: ".supply-chain-wrap",
                         start: yStart,
-                        
+
                         onEnter: () => timeline.play()
                     });
                 }
@@ -599,7 +505,7 @@
                             start: yStart,
                             end: yEnd,
                             scrub: true,
-                            
+
                         }
                     });
                     tl.from($(this).find(".word"), {
@@ -655,24 +561,6 @@
                 $(this).css('animation-delay', (index * 0.25) + 's');
             })
 
-            /*$(document).ready(function () {
-                function adjustHeroBg1() {
-                    var aboutH1 = $('.our-pertner-wrap').outerHeight();
-                    var wH1 = $(window).outerHeight();
-                    var totalT1 = aboutH1 - wH1;
-                    $('.our-pertner-wrap').css('top', -totalT1);
-                    console.log(aboutH1, wH1, totalT1)
-                }
-
-                // Initial adjustment
-                adjustHeroBg1();
-
-                // Adjust on window resize
-                $(window).on('resize', function () {
-                    adjustHeroBg1();
-                });
-            });*/
-
 
         } else if ($('.about-page').length) {
             $(document).ready(function () {
@@ -692,66 +580,7 @@
                     adjustHeroBg1();
                 });
             });
-            /*$(document).ready(function () {
-                var $teamComponents = $('.team-component');
-                var $teamContents = $('.team-content');
-                var hasAnimated = false; // To ensure animation runs only once
 
-                // Function to shuffle the team components
-                function shuffleArray(array) {
-                    for (var i = array.length - 1; i > 0; i--) {
-                        var j = Math.floor(Math.random() * (i + 1));
-[array[i], array[j]] = [array[j], array[i]];
-                    }
-                    return array;
-                }
-
-                // Function to show cards in chaotic order
-                function showCards() {
-                    var $shuffledComponents = $(shuffleArray($teamComponents.toArray()));
-                    $shuffledComponents.each(function (index) {
-                        $(this).delay(index * 300).queue(function (next) {
-                            $(this).addClass('show');
-                            next();
-                        });
-                    });
-                }
-
-                // Function to show typing effect on text
-                function showTypingEffect() {
-                    setTimeout(function () {
-                        $teamContents.addClass('show');
-                    }, $teamComponents.length * 300); // Adjust delay based on the total animation time
-                }
-
-                // Function to handle animation when element is in view
-                function handleAnimation() {
-                    if (hasAnimated) return; // Prevent re-triggering animations
-                    showCards();
-                    showTypingEffect();
-                    hasAnimated = true; // Set flag to prevent re-triggering
-                }
-
-                // Set up IntersectionObserver
-                var observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            handleAnimation();
-                        } else {
-                            // Remove the animation classes when the element leaves the viewport
-                            $teamComponents.removeClass('show');
-                            $teamContents.removeClass('show');
-                            hasAnimated = false; // Reset flag to allow re-triggering
-                        }
-                    });
-                }, {
-                    threshold: 0.1
-                }); // Adjust threshold if necessary
-
-                // Observe the team-component-wrap
-                observer.observe(document.querySelector('.team-component-wrap'));
-
-            });*/
 
             $(document).ready(function () {
                 function countDecimals(val) {
@@ -890,6 +719,7 @@
                     $window.trigger('scroll');
                 }
             });
+
             let tlBgAlpha = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".blank-trigger",
@@ -1051,7 +881,7 @@
                     start: "0% 100%",
                     end: "90% 50%",
                     scrub: 1,
-                    
+
                 }
             });
 
@@ -1078,7 +908,7 @@
                     start: "50% 100%",
                     end: "100% bottom",
                     scrub: 1,
-                    
+
                 }
             });
 
