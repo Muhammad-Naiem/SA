@@ -363,7 +363,6 @@
                 trigger: ".supply-chain-wrap",
                 start: "130% 100%",
                 toggleActions: "play none none reverse",
-                markers: true,
                 onEnter: function () {
                     const video = document.querySelector('.video-trigger');
                     video.currentTime = 0; // Reset video to start
