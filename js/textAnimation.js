@@ -23,7 +23,9 @@
         // lenis.stop()
 
 
-       
+            $(document).ready(function(){
+                $('body').css('opacity', 1)
+            })
             
 
             // Check if the preloader has been shown before
@@ -41,15 +43,20 @@
                 $('body').css('opacity', 1)
                 console.log("Soft navigation, removing preloader");
                 document.documentElement.style.setProperty('--preloader', 'none');
-                setTimeout(function () {
+                $(window).on('load', function(){
+                    setTimeout(function () {
                     animOninit();
                 }, 100);
                 $('html').addClass('loaded');
+                })
+                
+                
             }
         
 
         $(window).on('beforeunload', function () {
             document.documentElement.style.setProperty('--preloader', 'none');
+            $('body').css('opacity', 1)
             sessionStorage.setItem('preloaderShown', 'true');
         });
 
