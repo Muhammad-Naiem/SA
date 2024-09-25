@@ -10,8 +10,8 @@
     <meta name="format-detection" content="telephone=no">
     <title>Stirbler</title>
 
-
     <link type="text/css" rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -43,9 +43,13 @@
                     </div>
                 </div>
                 <div class="preloader-video">
-                    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                    <!-- <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                         <source src="video/preloader-video.mp4" type="video/mp4">
-                    </video>
+                    </video> -->
+                    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                    <lottie-player class="preloader-lottie" src="json/Stiebler.json" background="transparent" speed="1"
+                        loop autoplay>
+                    </lottie-player>
                 </div>
             </div>
             <div class="preloader-bottom">
@@ -67,24 +71,7 @@
             </div>
         </div>
     </section>
-    <!--
-    <div class="transition-wrap">
-        <div class="transition-panel">
-            <div class="transition-column-top"></div>
-            <div class="transition-column-top"></div>
-            <div class="transition-column-top"></div>
-            <div class="transition-column-top"></div>
-            <div class="transition-column-top"></div>
-        </div>
-        <div class="transition-panel">
-            <div class="transition-column-bottom"></div>
-            <div class="transition-column-bottom"></div>
-            <div class="transition-column-bottom"></div>
-            <div class="transition-column-bottom"></div>
-            <div class="transition-column-bottom"></div>
-        </div>
-    </div>
--->
+
 
     <header class="header-wrap">
         <div class="container ">
@@ -225,18 +212,6 @@
                         <div class="hero-line">
                             <img src="svgs/desk-hero-line.svg" class="desk" alt="">
                             <img src="svgs/mobile-hero-line.svg" class="mobi" alt="">
-                            <!--<div class="bg-line-mask bg-line-mask-1">
-                                <img src="svgs/BG-Line.svg" alt="">
-                            </div>
-                            <div class="bg-line-mask bg-line-mask-2">
-                                <img src="svgs/bg-line-Y.svg" alt="">
-                            </div>
-                            <div class="bg-line-mask bg-line-mask-3">
-                                <img src="svgs/Elipse-BG.svg" alt="">
-                            </div>
-                            <div class="decor-text">
-                                <img src="svgs/decor-text-2.svg" alt="">
-                            </div>-->
                         </div>
                         <div class="plus-symbol left-side">
                             <img src="svgs/plus.svg" alt="">
@@ -247,57 +222,97 @@
                         <div class="gradient-shape bw-gradient"></div>
                     </div>
                 </div>
-                <div class="section-hero-content">
-                    <div class="page-section section-content-wrap" id="section-1">
-                        <div class="container">
-                            <div class="section-content-inner">
-                                <div class="section-heading d-flex-start">
-                                    <div class="title animated-heading">
-                                        <h2 class="h2 heading-anim">We know that creating the <br> worlds most
-                                            <dfn> <dfn>complex technology</dfn> <br> has certain demands</dfn>
+                <div class="hero-text-content">
+                    <div class="hero-text-blocks">
+                        <div class="hero-text-block">
+                            <div class="hero-model-heading">
+                                <div class="hero-model-heading-top">
+                                    <div class="title animated-heading init-load">
+                                        <h2 class="h2 heading-anim">We solve the worlds <dfn>toughest
+                                                <dfn>Supply Chain</dfn> Challenges</dfn>
                                         </h2>
                                     </div>
                                 </div>
                             </div>
+                            <a href="#next-section" class="scroll-icon-wrap">
+                                <div class="scroll-border-shape">
+                                    <img src="svgs/scroll-line.svg" alt="Scroll svg-line">
+                                </div>
+                                <div class="scroll-text-icon">
+                                    <img src="svgs/mouse-icon.svg" alt="Mouse Icon">
+                                    <span>Scroll</span>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    <div class="page-section has-sticky-parent" id="section-2">
-                        <div class="page-section has-sticky" data-speed="2">
-                            <div class="container">
-                                <div class="section-content-inner">
-                                    <div class="section-heading d-flex-start">
-                                        <div class="title animated-heading">
-                                            <h2 class="h2 heading-anim">We can help bring <dfn> <dfn>your ideas</dfn>
-                                                    together
-                                                    Faster,</dfn></h2>
-                                        </div>
+                        <div class="hero-text-block">
+                            <div class="hero-model-heading">
+                                <div class="hero-model-heading-top">
+                                    <div class="title animated-heading">
+                                        <h2 class="h2 heading-anim">
+                                            We can help bring your <dfn>projects together
+                                                <dfn>faster, cheaper</dfn> and more strategically.</dfn>
+                                        </h2>
                                     </div>
-                                    <div class="section-heading d-flex-end">
-                                        <div class="title animated-heading align-from-right">
-                                            <h2 class="h2 heading-anim">Cheaper and more Efficiently.</h2>
-                                        </div>
+                                </div>
+                                <div class="hero-model-heading-bottom">
+                                    <div class="title animated-heading align-from-right">
+                                        <h2 class="h2 heading-anim">Helping your engineering teams focus on creativity
+                                            and design.</h2>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="page-section has-sticky-parent logo-transition-trigger" id="section-3">
-                        <div class="our-team-wrap has-sticky" data-speed="2">
-                            <div class="container">
-                                <div class="section-content-inner">
-                                    <div class="section-heading d-flex-start">
-                                        <div class="title animated-heading">
-                                            <h2 class="h2 heading-anim">Our team solves the <dfn><dfn>toughest
-                                                        mechanical supply</dfn> chain challenges in the world.</dfn>
-                                            </h2>
-                                        </div>
+                        <div class="hero-text-block">
+                            <div class="hero-model-heading">
+                                <div class="hero-model-heading-top">
+                                    <div class="title animated-heading">
+                                        <h2 class="h2 heading-anim"> Accelerating your R&D efforts and preparing<dfn>
+                                                <dfn>for Production</dfn> readiness is our specialty.</dfn> </h2>
                                     </div>
-
+                                </div>
+                                <div class="hero-model-heading-bottom">
+                                    <div class="title animated-heading align-from-right">
+                                        <h2 class="h2 heading-anim">We scale with your needs offering the most efficient
+                                            supply chain solutions available.</h2>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="hero-text-block block-trigger-alpha">
+                            <div class="hero-model-heading">
+                                <div class="hero-model-heading-top">
+                                    <div class="title animated-heading">
+                                        <h2 class="h2 heading-anim"> <dfn>We can tackle any <dfn>build to print
+                                                    component</dfn> or assembly from Cradle to Grave.</dfn> </h2>
+                                    </div>
+                                </div>
 
+                            </div>
+                        </div>
+                        <div class="hero-text-block">
+                            <div class="hero-model-heading">
+                                <div class="hero-model-heading-top">
+                                    <div class="title animated-heading">
+                                        <h2 class="h2 heading-anim"> While providing full <dfn>transparency and
+                                                <dfn>100% visibility</dfn> throughout the entire process.</dfn> </h2>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hero-text-block">
+                            <div class="hero-model-heading">
+                                <div class="hero-model-heading-top">
+                                    <div class="title animated-heading">
+                                        <h2 class="h2 heading-anim"> Let our experience with <dfn>some of the
+                                                <dfn>worlds leading companies</dfn> add value to your operation.</dfn>
+                                        </h2>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <section class="engine-3d-wrap">
                     <div class="engine-3d-block">
@@ -309,15 +324,6 @@
                 </section>
 
             </section>
-            <a href="#next-section" class="scroll-icon-wrap">
-                <div class="scroll-border-shape">
-                    <img src="svgs/scroll-line.svg" alt="Scroll svg-line">
-                </div>
-                <div class="scroll-text-icon">
-                    <img src="svgs/mouse-icon.svg" alt="Mouse Icon">
-                    <span>Scroll</span>
-                </div>
-            </a>
             <div class="next-section-trigger"></div>
             <section class="companies-wrap">
                 <div class="companies-sticky">

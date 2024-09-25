@@ -29,7 +29,7 @@
             direction,
             progress
         }) => {
-            console.log(scroll)
+            
         });
 
         function raf(time) {
@@ -77,6 +77,16 @@
 
         if ($('.home-page').length) {
 
+
+            $('.hero-text-block').each(function(){
+                var $this = $(this);
+
+                if($this.find('.hero-model-heading-bottom').length){
+                    $this.addClass('has-double-heading')
+                }
+
+            })
+
             gsap.registerPlugin(ScrollTrigger);
 
             const $model3D = $(".engine-3D-img");
@@ -93,23 +103,23 @@
                 }
             }
 
-            $(document).ready(function () {
-                function adjustHeroBg1() {
-                    var aboutH1 = $('.section-hero').outerHeight();
-                    var wH1 = $(window).outerHeight();
-                    var totalT1 = aboutH1 - wH1;
-                    $('.section-hero').css('top', -totalT1);
-                    console.log(aboutH1, wH1, totalT1)
-                }
+            // $(document).ready(function () {
+            //     function adjustHeroBg1() {
+            //         var aboutH1 = $('.section-hero').outerHeight();
+            //         var wH1 = $(window).outerHeight();
+            //         var totalT1 = aboutH1 - wH1;
+            //         $('.section-hero').css('top', -totalT1);
+            //         console.log(aboutH1, wH1, totalT1)
+            //     }
 
-                // Initial adjustment
-                adjustHeroBg1();
+            //     // Initial adjustment
+            //     adjustHeroBg1();
 
-                // Adjust on window resize
-                $(window).on('resize', function () {
-                    adjustHeroBg1();
-                });
-            });
+            //     // Adjust on window resize
+            //     $(window).on('resize', function () {
+            //         adjustHeroBg1();
+            //     });
+            // });
 
 
             // Preload all images before initializing the scroll handler
@@ -227,41 +237,41 @@
 
 
             // Timeline for .our-team-wrap
-            let nextSection = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".next-section-trigger",
-                    scrub: 1,
-                    start: '50% bottom',
-                    end: '80% 80%',
+            // let nextSection = gsap.timeline({
+            //     scrollTrigger: {
+            //         trigger: ".next-section-trigger",
+            //         scrub: 1,
+            //         start: '50% bottom',
+            //         end: '80% 80%',
 
-                }
-            });
+            //     }
+            // });
 
-            let nextSection1 = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".next-section-trigger",
-                    scrub: 1,
-                    start: '100% 70%',
-                    end: '130% 100%',
+            // let nextSection1 = gsap.timeline({
+            //     scrollTrigger: {
+            //         trigger: ".next-section-trigger",
+            //         scrub: 1,
+            //         start: '100% 70%',
+            //         end: '130% 100%',
 
-                }
-            });
+            //     }
+            // });
 
-            nextSection.fromTo($('.section-hero'), {
-                opacity: 1,
-                duration: 0.5,
-            }, {
-                opacity: 0,
-                duration: 0.5,
-            }, "<")
+            // nextSection.fromTo($('.section-hero'), {
+            //     opacity: 1,
+            //     duration: 0.5,
+            // }, {
+            //     opacity: 0,
+            //     duration: 0.5,
+            // }, "<")
 
-            nextSection1.fromTo($('.companies-wrap'), {
-                opacity: 0,
-                duration: 0.5,
-            }, {
-                opacity: 1,
-                duration: 0.5,
-            }, "<")
+            // nextSection1.fromTo($('.companies-wrap'), {
+            //     opacity: 0,
+            //     duration: 0.5,
+            // }, {
+            //     opacity: 1,
+            //     duration: 0.5,
+            // }, "<")
 
 
             // Timeline for .our-team-wrap

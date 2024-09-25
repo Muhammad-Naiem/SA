@@ -44,6 +44,7 @@
 
     --model-3D-size: 98.51vmin;
     --dynamic-width: auto;
+    --preloader: 'none';
 
 }
 *,
@@ -58,7 +59,7 @@
 html { overflow: hidden; }
 html.loaded { overflow-x: hidden; overflow-y: scroll;}
 
-body {background-color: var(--black); color: var(--white); overflow: clip; font-family: var(--General-Sans-Regular); font-size: 0.833vw; font-weight: normal; line-height: normal;}
+body {background-color: var(--black); color: var(--white); overflow: clip; font-family: var(--General-Sans-Regular); font-size: 0.833vw; font-weight: normal; line-height: normal; opacity: 0;}
 
 ul{list-style: none;}
 
@@ -104,7 +105,7 @@ a.btn:hover svg line{stroke: var(--valencia-red);}
 
 
 /*Preloader*/
-.preloader-wrap{position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999; background-color: var(--black); overflow: hidden; -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); -webkit-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out}
+.preloader-wrap{position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999; background-color: var(--black); overflow: hidden; -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); -webkit-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out; display: var(--preloader);}
 .loaded .preloader-wrap{-webkit-clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);}
 .preloader-radial{position: absolute; width: 71.771vw; height: 71.771vw; border-radius: 100%; opacity: 0.25; background: -o-radial-gradient(50% 50%, 50% 50%, #DC4444 0%, rgba(220, 68, 68, 0.00) 100%); background: radial-gradient(50% 50% at 50% 50%, #DC4444 0%, rgba(220, 68, 68, 0.00) 100%); mix-blend-mode: hard-light; left: -35.46875%; bottom: -35.208vw;}
 .preloader-inner { width: 100%; height: 100%; z-index: 2; position: relative; background: transparent; display: -webkit-box; display: -ms-flexbox; display: flex; }
@@ -116,8 +117,8 @@ img.preloader-left-shape { width: 34.4795%; height: 100%; margin-left: -16px;}
 svg.preloader-middle-shape { width: 33.907%; height: 100%;}
 img.preloader-right-shape { width: 32.032%; height: 100%;}
 
-.preloader-video { position: absolute; top: 0%; left: 0%; top: 0%;  width: 100%; height: 100%; }
-.preloader-video video { position: absolute; left: 51%; top: 56.5%; will-change: transform; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 105.648vh; max-width: 60%; }
+.preloader-video { position: absolute; top: 0%; left: 0%; top: 0%;  width: 100%; height: 100%; overflow: hidden;}
+.preloader-video video, .preloader-video .preloader-lottie { position: absolute; left: 51%; top: 56.5%; will-change: transform; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 105.648vh; max-width: 60%; }
 
 .preloader-text{display: -webkit-box;display: -ms-flexbox;display: flex; width: 100%; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; padding-bottom: 15px;}
 .preloader-text span{color: var(--white); font-family: var(--General-Sans-Regular); font-size: 10em; font-size: clamp(48px, 8.333vw, 160px); font-style: normal; line-height: 80%;}
@@ -199,8 +200,8 @@ header.header-wrap nav ul li.active a span{color: var(--white)}
 .mac-os .bg-colorburn img { opacity: 0.2; mix-blend-mode: multiply; background-blend-mode: multiply; }
 
 /*Section Hero Style*/
-section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;}
-.section-hero-images{width: 100%; position: absolute; top: 0; left: 0; background: #101010;}
+section.section-hero {background: #101010; z-index: 1;}
+.section-hero-images{width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: #101010;}
 .section-hero-inner{width: 100%; height: 100vmin; position: sticky; top: 0; background: #101010;}
 
 .hero-bg{width: 100%; height: 100%}
@@ -271,6 +272,24 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
 
 .section-content-inner div.title { max-width: 32.2em; }
 .section-content-wrap.our-team-wrap:first-child .section-content-inner div.title{max-width: 32.2em}
+
+
+
+/* Hero New Style */
+.hero-text-content { width: 100%; height: 100%; }
+.hero-text-blocks{width: 100%; height: 100%;}
+.hero-text-block { width: 100%; height: 200vh; position: relative; padding-inline: 6.375em;}
+.hero-text-block:nth-child(1){height: 100%;}
+.hero-text-block.has-double-heading{padding-bottom: 30vh;}
+.hero-model-heading {width: 100%; height: 100vh; padding-block: 5.85em 7.9em; display: flex; flex-flow: column wrap; justify-content: space-between; position: sticky; top: 0;}
+.hero-text-block:nth-child(1) .hero-model-heading{padding-block: 13.253em 9.25em;}
+.hero-text-block:nth-child(1) .hero-model-heading-top{width: 27.5em;}
+.hero-text-block:nth-child(3) .hero-model-heading-top{width: 33.5em;}
+.hero-text-block:nth-child(3) .hero-model-heading-bottom{width: 32.5em;}
+.hero-text-block:nth-child(4) .hero-model-heading-top{width: 31.5em;}
+.hero-model-heading h2{letter-spacing: -0.02em; font-size: 3.125em;}
+.hero-model-heading-top { width: 32.5em; align-self: flex-start;}
+.hero-model-heading-bottom { width: 34.125em; align-self: flex-end;}
 
 
 /* Start toughest-challenges-wrap Style */
@@ -1292,7 +1311,7 @@ section.section-hero {background: #101010; z-index: 1; position: sticky; top: 0;
     .preloader-line-mobi img{width: 100%;}
     /*img.mobi-preloader-top-shape{height: 30.773%;}
     img.mobi-preloader-main-shape{height: 67.405%;}*/
-    .preloader-video video {top: 0; width: 150%; max-width: 240%; height: 100%; left: 50%; will-change: transform; -webkit-transform: translate(-50%, 0); -ms-transform: translate(-50%, 0); transform: translate(-50%, 0); -o-object-position: left 220px; object-position: left 220px; /* object-fit: contain; */}
+    .preloader-video video, .preloader-video .preloader-lottie {top: 0; width: 150%; max-width: 240%; height: 100%; left: 50%; will-change: transform; -webkit-transform: translate(-50%, 0); -ms-transform: translate(-50%, 0); transform: translate(-50%, 0); -o-object-position: left 220px; object-position: left 220px; /* object-fit: contain; */}
     .preloader-radial {width: 82.4vw; height: 82.4vw; left: -42.266667%; bottom: -25.333vw; scale: 1.5;}
     /* End Preloader Style */
     
