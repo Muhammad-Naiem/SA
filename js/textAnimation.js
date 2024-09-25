@@ -146,14 +146,6 @@
 
 
 
-
-
-        // Function to add markup with transition using GSAP and ScrollTrigger
-
-
-
-
-
         function animOninit() {
             console.log('animinit')
             $('.animated-heading.init-load').each(function (index, element) {
