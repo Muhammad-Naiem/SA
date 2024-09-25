@@ -23,40 +23,45 @@
         // lenis.stop()
 
 
-            $(document).ready(function(){
-                $('body').css('opacity', 1)
-            })
-            
+        
+
+        $(window).on('load', function () {
+            ScrollTrigger.refresh();
 
             // Check if the preloader has been shown before
             var preloaderShown = sessionStorage.getItem('preloaderShown');
             var isHardReload = performance.navigation.type === performance.navigation.TYPE_RELOAD;
 
             if (isHardReload || !preloaderShown) {
-                document.documentElement.style.setProperty('--preloader', 'block');
-                $('body').css('opacity', 1)
-                 $(window).on('load', function () {
+                
+                if ($('.home-page').length) {
+                    document.documentElement.style.setProperty('--preloader', 'block');
+                    console.log("Initializing preloader");
                     initializePreloader();
-                });
+                } else {
+                    document.documentElement.style.setProperty('--preloader', 'none');
+                    console.log("Initializing animations");
+                    setTimeout(function () {
+                        animOninit();
+                    }, 100);
+                    $('html').addClass('loaded');
+                }
             } else {
                 // Remove the preloader immediately on soft navigation
-                $('body').css('opacity', 1)
                 console.log("Soft navigation, removing preloader");
-                document.documentElement.style.setProperty('--preloader', 'none');
-                $(window).on('load', function(){
-                    setTimeout(function () {
+                    document.documentElement.style.setProperty('--preloader', 'none');
+                $('.preloader').remove();
+                setTimeout(function () {
                     animOninit();
                 }, 100);
                 $('html').addClass('loaded');
-                })
-                
-                
             }
-        
+        });
 
         $(window).on('beforeunload', function () {
-            document.documentElement.style.setProperty('--preloader', 'none');
-            $('body').css('opacity', 1)
+            // Remove the preloader when navigating away from the page
+            console.log("Navigating away, removing preloader");
+            $('.preloader').remove();
             sessionStorage.setItem('preloaderShown', 'true');
         });
 
@@ -81,10 +86,10 @@
 
                     // Set the flag in sessionStorage
                     sessionStorage.setItem('preloaderShown', 'true');
-                    // Hide the preloader after it has been shown
                 }
             }, 50); // Adjust the interval time as needed
         }
+
 
         // Register the ScrollTrigger plugin
         gsap.registerPlugin(ScrollTrigger);
@@ -170,7 +175,7 @@
                                 duration: 0.7,
                                 ease: "power3.inOut",
                             });
-                        }, 100 * wordIndex);
+                        }, 70 * wordIndex);
                     })
                 }
                 setTimeout(function () {
@@ -200,7 +205,7 @@
                             duration: 0.7,
                             ease: "power3.inOut",
                         });
-                    }, 100 * wordIndex);
+                    }, 70 * wordIndex);
                 })
             }
 
@@ -210,7 +215,7 @@
                 onEnter: function () {
                     setTimeout(function () {
                         animateWords();
-                    }, 200); // Add a 1-second delay before starting the animation
+                    }, 50); // Add a 1-second delay before starting the animation
                 },
                 onLeaveBack: function () {
                     // Reset the animation

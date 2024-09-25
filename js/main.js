@@ -2,6 +2,19 @@
     $(function () {
         gsap.registerPlugin(ScrollTrigger);
         
+  
+
+
+        $(window).on('scroll', function(){
+            var scrollY = $(this).scrollTop();
+
+            if(scrollY > 150){
+                $('header.header-wrap').addClass('headroom--not-top')
+            }else{
+                $('header.header-wrap').removeClass('headroom--not-top')
+            }
+
+        })
 
         // Function to detect if the user is on a mobile device
         function isMobile() {
@@ -103,23 +116,23 @@
                 }
             }
 
-            // $(document).ready(function () {
-            //     function adjustHeroBg1() {
-            //         var aboutH1 = $('.section-hero').outerHeight();
-            //         var wH1 = $(window).outerHeight();
-            //         var totalT1 = aboutH1 - wH1;
-            //         $('.section-hero').css('top', -totalT1);
-            //         console.log(aboutH1, wH1, totalT1)
-            //     }
+            $(document).ready(function () {
+                function adjustHeroBg1() {
+                    var aboutH1 = $('.section-hero').outerHeight();
+                    var wH1 = $(window).outerHeight();
+                    var totalT1 = aboutH1 - wH1;
+                    $('.section-hero').css('top', -totalT1);
+                    console.log(aboutH1, wH1, totalT1)
+                }
 
-            //     // Initial adjustment
-            //     adjustHeroBg1();
+                // Initial adjustment
+                adjustHeroBg1();
 
-            //     // Adjust on window resize
-            //     $(window).on('resize', function () {
-            //         adjustHeroBg1();
-            //     });
-            // });
+                // Adjust on window resize
+                $(window).on('resize', function () {
+                    adjustHeroBg1();
+                });
+            });
 
 
             // Preload all images before initializing the scroll handler
@@ -141,20 +154,6 @@
                     $model3D.attr("src", images[currentFrame].src); // Use preloaded images
                 }
             });
-
-
-
-            // $(document).ready(function () {
-
-            //     $('.transition-column-top').each(function (index) {
-            //         $(this).css('transition-delay', (index * 0.002) + 's');
-            //     })
-            //     $('.transition-column-bottom').each(function (index) {
-            //         $(this).css('transition-delay', (index * 0.002) + 's');
-            //     })
-
-            // });
-
 
             function initializeCustomAnimations() {
                 // Select the specific elements
@@ -237,50 +236,49 @@
 
 
             // Timeline for .our-team-wrap
-            // let nextSection = gsap.timeline({
-            //     scrollTrigger: {
-            //         trigger: ".next-section-trigger",
-            //         scrub: 1,
-            //         start: '50% bottom',
-            //         end: '80% 80%',
+            let nextSection = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".next-section-trigger",
+                    scrub: 1,
+                    start: '50% bottom',
+                    end: '80% 80%',
 
-            //     }
-            // });
+                }
+            });
 
-            // let nextSection1 = gsap.timeline({
-            //     scrollTrigger: {
-            //         trigger: ".next-section-trigger",
-            //         scrub: 1,
-            //         start: '100% 70%',
-            //         end: '130% 100%',
+            let nextSection1 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".companies-wrap",
+                    scrub: 1,
+                    start: 'top top',
+                    end: '20% center',
+                }
+            });
 
-            //     }
-            // });
+            nextSection.fromTo($('.section-hero'), {
+                opacity: 1,
+                duration: 0.5,
+            }, {
+                opacity: 0,
+                duration: 0.5,
+            }, "<")
 
-            // nextSection.fromTo($('.section-hero'), {
-            //     opacity: 1,
-            //     duration: 0.5,
-            // }, {
-            //     opacity: 0,
-            //     duration: 0.5,
-            // }, "<")
-
-            // nextSection1.fromTo($('.companies-wrap'), {
-            //     opacity: 0,
-            //     duration: 0.5,
-            // }, {
-            //     opacity: 1,
-            //     duration: 0.5,
-            // }, "<")
+            nextSection1.fromTo($('.companies-wrap'), {
+                opacity: 0,
+                duration: 0.5,
+            }, {
+                opacity: 1,
+                duration: 0.5,
+            }, "<")
 
 
             // Timeline for .our-team-wrap
             let tl1 = gsap.timeline({
                 scrollTrigger: {
-                    trigger: ".our-team-wrap",
+                    trigger: ".block-trigger-alpha",
                     scrub: 1,
                     start: 'top bottom',
-                    end: 'bottom bottom',
+                    end: 'center bottom',
                 }
             });
 
@@ -289,6 +287,14 @@
                 duration: 2,
             }, {
                 opacity: 1,
+                duration: 2,
+            }, ">");
+
+            tl1.fromTo($('.hero-bg'), {
+                opacity: 1,
+                duration: 2,
+            }, {
+                opacity: 0,
                 duration: 2,
             }, ">");
 
@@ -326,46 +332,6 @@
                 links.parent('li').removeClass("bullet-active");
                 link.parent('li').addClass("bullet-active");
             }
-
-
-            //            ScrollTrigger.create({
-            //                trigger: ".supply-chain-wrap",
-            //                start: "130% 100%", // Adjusted start point for better triggering
-            //                end: "140% 100%", // Adjusted end point for better triggering
-            //                markers: true,
-            //                
-            //                onEnter: function () {
-            //                    console.log('onEnter triggered');
-            //                    
-            //                    gsap.to('.supply-chain-wrap', {
-            //                        clipPath: "inset(0% 0 0% 0)",
-            //                        duration: 1,
-            //                        onComplete: function () {
-            //                            console.log('Animation complete enter');
-            //                            document.querySelector('.video-trigger').play();
-            //                        }
-            //                    });
-            //                },
-            //                onLeaveBack: function () {
-            //                    console.log('onLeaveBack triggered');
-            //                    
-            //                    gsap.to('.supply-chain-wrap', {
-            //                        clipPath: "inset(50% 0 50% 0)",
-            //                        duration: 1,
-            //                        onComplete: function () {
-            //                            console.log('Animation complete leave');
-            //                            document.querySelector('.video-trigger').pause();
-            //                        }
-            //                    });
-            //                }
-            //            });
-
-            //            ScrollTrigger.create({
-            //                trigger: ".supply-chain-wrap",
-            //                start: "130% 100%",
-            //                markers: true,
-            //            });
-
 
             ScrollTrigger.create({
                 trigger: ".supply-chain-wrap",
@@ -411,16 +377,6 @@
                             },
                             ">"
                         );
-
-//            tlClip.fromTo(".companies-bg", {
-//                    clipPath: "inset(0% 0 0% 0)",
-//                    duration: 0.1,
-//                }, {
-//                    clipPath: "inset(50% 0 50% 0)",
-//                    duration: 0.1,
-//                },
-//                ">"
-//            );
 
             let typeSplit = new SplitType('.after-clip-paragraph', {
                 types: 'lines, words, char',
@@ -480,8 +436,8 @@
                     var yStart = "150% 100%";
                     var yEnd = "200% 100%";
                 } else {
-                    var yStart = "150% 100%";
-                    var yEnd = "200% 100%";
+                    var yStart = "200% 100%";
+                    var yEnd = "250% 100%";
                 }
 
                 // Link timelines to scroll position
@@ -534,7 +490,7 @@
 
             $(document).ready(function () {
                 function updateHeroImagesHeight() {
-                    var heroContentHeight = $('.section-hero-content').outerHeight();
+                    var heroContentHeight = $('.hero-text-content').outerHeight();
                     $('.section-hero-images').css('height', heroContentHeight + 'px');
                 }
 
@@ -809,7 +765,7 @@
                                 onEnter: function () {
                                     $('.anim-paragraph-alone').each(function () {
                                         $(this).find('.word').each(function (index) {
-                                            $(this).css('transition-delay', (index * 0.03) + 's');
+                                            $(this).css('transition-delay', (index * 0.015) + 's');
                                         });
                                     });
                                     gsap.to(customAnimParagraph, {
