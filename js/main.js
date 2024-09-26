@@ -801,6 +801,7 @@
                     trigger: ".about-space-wrap",
                     start: "70% 90%",
                     end: "90% bottom",
+                    markers: true,
                     scrub: 1,
                 }
             });
