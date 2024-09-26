@@ -122,7 +122,7 @@
                     var wH1 = $(window).outerHeight();
                     var totalT1 = aboutH1 - wH1;
                     $('.section-hero').css('top', -totalT1);
-                    console.log(aboutH1, wH1, totalT1)
+                    
                 }
 
                 // Initial adjustment
@@ -341,12 +341,12 @@
                     const video = document.querySelector('.video-trigger');
                     video.currentTime = 0; // Reset video to start
                     video.play();
-                    console.log('Video playing');
+                    
                 },
                 onLeaveBack: function () {
                     const video = document.querySelector('.video-trigger');
                     video.pause();
-                    console.log('Video paused');
+                    
                 }
             });
 
@@ -365,14 +365,14 @@
                                 duration: 1,
                                 onComplete: function () {
                                     document.querySelector('.video-trigger').pause();
-                                    console.log('leave')
+                                    
                                 }
                             }, {
                                 clipPath: "inset(0% 0 0% 0)",
                                 duration: 1,
                                 onComplete: function () {
                                     document.querySelector('.video-trigger').play();
-                                    console.log('Enter')
+                                    
                                 }
                             },
                             ">"
@@ -532,7 +532,7 @@
                     var wH1 = $(window).outerHeight();
                     var totalT1 = aboutH1 - wH1;
                     $('.about-space-thumb').css('top', -totalT1);
-                    console.log(aboutH1, wH1, totalT1)
+                   
                 }
 
                 // Initial adjustment
@@ -795,13 +795,14 @@
 
 
 
+          
 
             let tlMarsAlpha = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".about-space-wrap",
                     start: "70% 90%",
                     end: "90% bottom",
-                    markers: true,
+                    
                     scrub: 1,
                 }
             });
@@ -836,33 +837,45 @@
             });
 
 
-
-
-
             let tlMoonMove = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".about-space-thumb",
-                    start: "0% 100%",
-                    end: "90% 50%",
-                    scrub: 1,
+scrollTrigger: {
+trigger: ".about-space-thumb",
+start: "0% 100%",
+end: "90% 50%",
+scrub: 1,
 
-                }
-            });
+}
+});
 
+function updateDimensions() {
+var wh = $(window).height();
+var objH = $('.about-space-thumb').height();
+var totalD = objH - wh;
+console.log(totalD);
 
-            tlMoonMove.fromTo($('.about-space-moon'), {
-                scale: 0.5,
-                duration: 1,
-            }, {
-                scale: 1,
-                duration: 1,
-            }, ">");
+// Update the properties of the existing timeline
+tlMoonMove.clear();
 
+tlMoonMove.fromTo($('.about-space-moon'), {
+scale: 0.5,
+duration: 1,
+}, {
+scale: 1,
+duration: 1,
+}, ">");
 
-            tlMoonMove.to($('.potential-headwinds-thumb'), {
-                scale: 0.5,
-                duration: 1,
-            }, "<");
+tlMoonMove.to($('.potential-headwinds-thumb'), {
+scale: 0.5,
+y: -(totalD / 2),
+duration: 1,
+}, "<");
+}
+
+// Initial calculation
+updateDimensions();
+
+// Recalculate on window resize
+$(window).resize(updateDimensions);
 
 
 
